@@ -1,0 +1,61 @@
+// Code generated DO NOT EDIT
+package {{.PackageName}}
+
+// Series is an identifier for an interest or exchange rate
+// https://www.riksbank.se/sv/statistik/sok-rantor--valutakurser/oppet-api/serier-for-webbservices/
+type Series int
+
+func (s Series) String() string {
+	return GetName(s)
+}
+
+const (
+{{ range $sidx, $section := .Sections -}}
+	// {{ $section.Description }}
+	{{ range $gidx, $group := $section.Groups }}
+	// {{ $group.Description }}
+	{{ range $idx, $series := $group.Series }}
+	// {{ formatSeriesConstant $series }} {{ $series.Description }}
+	{{ formatSeriesConstant $series }}{{ formatIotaAssignment $series $idx}}
+	{{- end }}
+	{{ end }}
+{{ end -}}
+)
+
+// Names are the parameter names of every series
+var Names = map[Series]string{
+{{ range $sidx, $section := .Sections -}}
+{{- range $gidx, $group := $section.Groups -}}
+{{- range $idx, $series := $group.Series -}}
+	{{ formatSeriesConstant $series }}: "{{ formatSeriesParameterName $series }}",
+{{ end -}}
+{{ end -}}
+{{ end -}}
+}
+
+// GetName will get the parameter name of a series
+func GetName(s Series) string {
+	return Names[s]
+}
+
+{{ range $sidx, $section := .Sections -}}
+{{- range $gidx, $group := $section.Groups -}}
+// {{ formatGroupName $group }} {{ $group.Description }}
+var {{ formatGroupName $group }} = map[Series]struct{}{
+{{ range $idx, $series := $group.Series -}}
+	{{ formatSeriesConstant $series }}: struct{}{},
+{{ end -}}
+}
+// {{ formatGroupName $group }}Names returns the names of all series in the group
+func {{ formatGroupName $group }}Names() []string {
+	names := make([]string, len({{ formatGroupName $group }}))
+	var i = 0
+	for k, _ := range {{ formatGroupName $group }} {
+		names[i] = GetName(k)
+		i++
+	}
+	return names
+}
+
+{{ end -}}
+{{ end -}}
