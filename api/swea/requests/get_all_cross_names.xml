@@ -1,0 +1,10 @@
+<soap:Envelope
+    xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:xsd="http://swea.riksbank.se/xsd">
+    <soap:Header/>
+    <soap:Body>
+        <xsd:getAllCrossNames>
+            <languageid>{{.Language}}</languageid>
+        </xsd:getAllCrossNames>
+    </soap:Body>
+</soap:Envelope>

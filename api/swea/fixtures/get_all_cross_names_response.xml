@@ -1,0 +1,18 @@
+<soap:Envelope
+    xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+    <soap:Body>
+        <ns2:getAllCrossNamesResponse
+            xmlns:ns2="http://swea.riksbank.se/xsd">
+            <return>
+                <seriesdescription>SEK Sweden, kronor</seriesdescription>
+                <seriesid>SEK</seriesid>
+                <seriesname>SEK</seriesname>
+            </return>
+            <return>
+                <seriesdescription>ATS Austria, shilling</seriesdescription>
+                <seriesid>SEKATSPMI</seriesid>
+                <seriesname>ATS</seriesname>
+            </return>
+        </ns2:getAllCrossNamesResponse>
+    </soap:Body>
+</soap:Envelope>
