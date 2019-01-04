@@ -29,7 +29,7 @@ func build(t *template.Template, req interface{}) (buf *bytes.Buffer, err error)
 
 func tmpl(name string) *template.Template {
 	box := requests.Box()
-	bts, err := box.MustBytes(fmt.Sprintf("%s.xml", name))
+	bts, err := box.Find(fmt.Sprintf("%s.xml", name))
 	if err != nil {
 		log.Fatal("cannot load table template")
 	}
