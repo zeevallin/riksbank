@@ -1,31 +1,29 @@
 package swea
 
 import (
+	"context"
 	"strconv"
 
 	"cloud.google.com/go/civil"
-	"github.com/zeeraw/riksbank/api/swea/responses"
+	"github.com/zeeraw/riksbank/swea/responses"
 )
 
 // GetCalendarDays returns the business days between two dates
-func GetCalendarDays(req *GetCalendarDaysRequest) (res *GetCalendarDaysResponse, err error) {
-	r, err := request(tmpl("get_calendar_days"), req)
+func (s *Swea) GetCalendarDays(ctx context.Context, req *GetCalendarDaysRequest) (*GetCalendarDaysResponse, error) {
+	body, err := build(tmpl("get_calendar_days"), req)
 	if err != nil {
-		return
+		return nil, err
 	}
-
 	env := &responses.GetCalendarDaysResponseEnvelope{}
-	err = call(r, env)
+	err = s.call(ctx, body, env)
 	if err != nil {
-		return
+		return nil, err
 	}
-
-	res = &GetCalendarDaysResponse{
+	res := &GetCalendarDaysResponse{
 		From: req.From,
 		To:   req.To,
 		Days: make([]Day, len(env.Body.GetCalendarDaysResponse.Return)),
 	}
-
 	for idx, r := range env.Body.GetCalendarDaysResponse.Return {
 		date, err := civil.ParseDate(r.Caldate.Text)
 		if err != nil {
@@ -46,25 +44,21 @@ func GetCalendarDays(req *GetCalendarDaysRequest) (res *GetCalendarDaysResponse,
 			IsBankDay: isTrue(r.Bankday.Text),
 		}
 	}
-
-	return
+	return res, nil
 }
 
 // GetAllCrossNames returns the business days between two dates
-func GetAllCrossNames(req *GetAllCrossNamesRequest) (res *GetAllCrossNamesResponse, err error) {
-	r, err := request(tmpl("get_all_cross_names"), req)
+func (s *Swea) GetAllCrossNames(ctx context.Context, req *GetAllCrossNamesRequest) (*GetAllCrossNamesResponse, error) {
+	body, err := build(tmpl("get_all_cross_names"), req)
 	if err != nil {
-		return
+		return nil, err
 	}
-
 	env := &responses.GetAllCrossNamesResponseEnvelope{}
-	err = call(r, env)
-
-	res = &GetAllCrossNamesResponse{
+	err = s.call(ctx, body, env)
+	res := &GetAllCrossNamesResponse{
 		Language: req.Language,
 		Series:   make([]Series, len(env.Body.GetAllCrossNamesResponse.Return)),
 	}
-
 	for idx, r := range env.Body.GetAllCrossNamesResponse.Return {
 		res.Series[idx] = Series{
 			ID:          r.Seriesid.Text,
@@ -72,6 +66,5 @@ func GetAllCrossNames(req *GetAllCrossNamesRequest) (res *GetAllCrossNamesRespon
 			Description: r.Seriesdescription.Text,
 		}
 	}
-
-	return
+	return res, nil
 }
