@@ -1,12 +1,11 @@
-packr:
+prepare:
+
+gen: prepare
 	@packr
 
-gen: packr
-	@go run gen/gen.go ./api/series
-	@cd api/swea && wsdl2go -p="swea" -yolo < sweaWS.wsdl > swea.go
-
-install:
+install: prepare
+	@go get -u github.com/gobuffalo/packr/packr
 	@dep ensure -v -update
-
-run: packr
-	@go run test/main.go
+	
+test: gen
+	@go test ./...
