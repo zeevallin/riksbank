@@ -11,10 +11,15 @@ import (
 	"github.com/zeeraw/riksbank/swea"
 )
 
+const (
+	daysName  = "days"
+	daysUsage = "Lists days and information about them between two dates"
+)
+
 func (r *runner) cmdDays() cli.Command {
 	return cli.Command{
-		Name:   "days",
-		Usage:  "Lists days and information about them between two dates",
+		Name:   daysName,
+		Usage:  daysUsage,
 		Action: r.actionDays,
 		Flags: []cli.Flag{
 			r.flagFrom(),
@@ -45,7 +50,7 @@ func (r *runner) actionDays(c *cli.Context) error {
 }
 
 func (r *runner) renderDays(res *swea.GetCalendarDaysResponse) {
-	fmt.Fprintf(os.Stdout, "Showing calendar days for dates:\n%s to %s\n\n", res.From.String(), res.To.String())
+	fmt.Fprintf(os.Stdout, "Showing days between %s and %s\n\n", res.From.String(), res.To.String())
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
 	fmt.Fprintf(w, "Date\t Year\t Week\t Bank day\n")
 	for _, day := range res.Days {
