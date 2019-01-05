@@ -1,8 +1,6 @@
-package main
+package cli
 
 import (
-	"log"
-	"os"
 	"time"
 
 	"cloud.google.com/go/civil"
@@ -18,6 +16,11 @@ type runner struct {
 	to   string
 }
 
+var (
+	defaultFrom string
+	defaultTo   string
+)
+
 func init() {
 	today := civil.DateOf(time.Now())
 	// Default to should be today
@@ -26,7 +29,8 @@ func init() {
 	defaultFrom = today.AddDays(-7).String()
 }
 
-func main() {
+// Run will run the command line tool
+func Run(args []string) error {
 	r := &runner{
 		api: swea.New(swea.Config{}),
 	}
@@ -46,8 +50,5 @@ func main() {
 	app.Before = func(c *cli.Context) error {
 		return nil
 	}
-	err := app.Run(os.Args)
-	if err != nil {
-		log.Fatal(err)
-	}
+	return app.Run(args)
 }

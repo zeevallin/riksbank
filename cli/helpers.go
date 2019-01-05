@@ -1,4 +1,4 @@
-package main
+package cli
 
 func boolToYesNo(b bool) string {
 	if b {

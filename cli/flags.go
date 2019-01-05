@@ -1,12 +1,7 @@
-package main
+package cli
 
 import (
 	"github.com/urfave/cli"
-)
-
-var (
-	defaultFrom string
-	defaultTo   string
 )
 
 func (r *runner) flagFrom() *cli.StringFlag {
