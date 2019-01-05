@@ -15,6 +15,14 @@ const (
 	Swedish = Language("sv")
 )
 
+// Series is the container for a series ID
+type Series string
+
+// ToCurrency converts a series into a currency
+func (s Series) ToCurrency() Currency {
+	return ParseCurrency(string(s))
+}
+
 // Day represents a date in the context of the central bank
 type Day struct {
 	Date      civil.Date
@@ -23,11 +31,34 @@ type Day struct {
 	IsBankDay bool
 }
 
-// Series represents a interest or currency conversion series
-type Series struct {
+// CrossRate is an exchange rate between two currencies
+type CrossRate struct {
+	Base    Currency
+	Counter Currency
+	Date    civil.Date
+	Period  string
+	Value   string
+}
+
+// SeriesInfo represents a interest or currency conversion series information
+type SeriesInfo struct {
 	ID          string
 	Name        string
 	Description string
+}
+
+// CrossPair are the series to compare in a currency exchange
+type CrossPair struct {
+	Base    Series
+	Counter Series
+}
+
+// ToCurrencyPair converts
+func (cp CrossPair) ToCurrencyPair() CurrencyPair {
+	return CurrencyPair{
+		Base:    cp.Base.ToCurrency(),
+		Counter: cp.Counter.ToCurrency(),
+	}
 }
 
 // GetCalendarDaysRequest represents the parameters to get all business days between two dates
@@ -51,5 +82,26 @@ type GetAllCrossNamesRequest struct {
 // GetAllCrossNamesResponse contains the currency conversion series
 type GetAllCrossNamesResponse struct {
 	Language Language
-	Series   []Series
+	Series   []SeriesInfo
+}
+
+// GetCrossRatesRequest represents the parameters to get all change rates
+type GetCrossRatesRequest struct {
+	CrossPairs []CrossPair
+
+	From            civil.Date
+	To              civil.Date
+	Language        Language
+	AggregateMethod AggregateMethod
+}
+
+// GetCrossRatesResponse contains exchange rates
+type GetCrossRatesResponse struct {
+	CrossRates []CrossRate
+	CrossPairs []CrossPair
+
+	From            civil.Date
+	To              civil.Date
+	Language        Language
+	AggregateMethod AggregateMethod
 }

@@ -1,0 +1,21 @@
+<soap:Envelope
+    xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:xsd="http://swea.riksbank.se/xsd">
+    <soap:Header/>
+    <soap:Body>
+        <xsd:getCrossRates>
+            <crossRequestParameters>
+            <aggregateMethod>{{ .AggregateMethod }}</aggregateMethod>
+            {{- range .CrossPairs }}
+            <crossPair>
+                <seriesid1>{{.Base}}</seriesid1>
+                <seriesid2>{{.Counter}}</seriesid2>
+            </crossPair>
+            {{- end }}
+            <datefrom>{{fmtDate .From}}</datefrom>
+            <dateto>{{fmtDate .To}}</dateto>
+            <languageid>{{.Language}}</languageid>
+            </crossRequestParameters>
+        </xsd:getCrossRates>
+    </soap:Body>
+</soap:Envelope>

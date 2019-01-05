@@ -1,0 +1,75 @@
+<soap:Envelope
+    xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+<soap:Body>
+	<ns2:getCrossRatesResponse
+		xmlns:ns2="http://swea.riksbank.se/xsd">
+	<return>
+		<datefrom>2018-12-29</datefrom>
+		<dateto>2019-01-05</dateto>
+		<informationtext>The Swedish banks daily calculate a fixing rate at 9.30 a.m. according to the formula: (bid+asked) / 2. At 10.05 a.m. Stockholm Stock Exchange sets a joint MID-PRICE by calculating the aggregate of the banks' fixing rates. On the basis of the MID-PRICE it is possible to calculate exchange rates against other currencies, what is known as cross rates.</informationtext>
+		<groups>
+			<groupid>130</groupid>
+			<groupname>Currencies against Swedish kronor</groupname>
+			<series>
+				<seriesid1>SEK                      </seriesid1>
+				<seriesid2>SEKNOKPMI                </seriesid2>
+				<seriesname>1 SEK = ? NOK</seriesname>
+				<resultrows>
+					<date>2019-01-02</date>
+					<period
+						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+					<average
+						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+					<value>0.9721</value>
+				</resultrows>
+				<resultrows>
+					<date>2019-01-03</date>
+					<period
+						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+					<average
+						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+					<value>0.9685</value>
+				</resultrows>
+				<resultrows>
+					<date>2019-01-04</date>
+					<period
+						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+						<average
+							xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+							<value>0.9637</value>
+						</resultrows>
+					</series>
+					<series>
+						<seriesid1>SEKNOKPMI                </seriesid1>
+						<seriesid2>SEK                      </seriesid2>
+						<seriesname>1 NOK = ? SEK</seriesname>
+						<resultrows>
+							<date>2019-01-02</date>
+							<period
+								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+							<average
+								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+							<value>1.0287</value>
+						</resultrows>
+						<resultrows>
+							<date>2019-01-03</date>
+							<period
+								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+							<average
+								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+							<value>1.0325</value>
+						</resultrows>
+						<resultrows>
+							<date>2019-01-04</date>
+							<period
+								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+							<average
+								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+							<value>1.0376</value>
+						</resultrows>
+					</series>
+				</groups>
+			</return>
+		</ns2:getCrossRatesResponse>
+	</soap:Body>
+</soap:Envelope>
