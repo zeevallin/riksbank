@@ -1,0 +1,236 @@
+<soap:Envelope
+    xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+    <soap:Body>
+        <ns2:getInterestAndExchangeRatesResponse
+            xmlns:ns2="http://swea.riksbank.se/xsd">
+            <return>
+                <datefrom>2018-12-24</datefrom>
+                <dateto>2019-01-05</dateto>
+                <groups>
+                    <groupid>2</groupid>
+                    <groupname>Riksbank key interest rates</groupname>
+                    <series>
+                        <seriesid>SEKGBPPMI                </seriesid>
+                        <seriesname>1 GBP</seriesname>
+                        <unit>1.0</unit>
+                        <resultrows>
+                            <date>2018-12-27</date>
+                            <period></period>
+                            <min
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                <average
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <max
+                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                        <ultimo
+                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                            <value>11.4787</value>
+                                        </resultrows>
+                                        <resultrows>
+                                            <date>2018-12-28</date>
+                                            <period></period>
+                                            <min
+                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                <average
+                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                    <max
+                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                        <ultimo
+                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                            <value>11.3482</value>
+                                                        </resultrows>
+                                                        <resultrows>
+                                                            <date>2019-01-02</date>
+                                                            <period></period>
+                                                            <min
+                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                <average
+                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                    <max
+                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                        <ultimo
+                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                            <value>11.3493</value>
+                                                                        </resultrows>
+                                                                        <resultrows>
+                                                                            <date>2019-01-03</date>
+                                                                            <period></period>
+                                                                            <min
+                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                <average
+                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                    <max
+                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                        <ultimo
+                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                            <value>11.312</value>
+                                                                                        </resultrows>
+                                                                                        <resultrows>
+                                                                                            <date>2019-01-04</date>
+                                                                                            <period></period>
+                                                                                            <min
+                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                <average
+                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                    <max
+                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                        <ultimo
+                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                            <value>11.3801</value>
+                                                                                                        </resultrows>
+                                                                                                    </series>
+                                                                                                    <series>
+                                                                                                        <seriesid>SEKNOKPMI                </seriesid>
+                                                                                                        <seriesname>100 NOK</seriesname>
+                                                                                                        <unit>100.0</unit>
+                                                                                                        <resultrows>
+                                                                                                            <date>2018-12-27</date>
+                                                                                                            <period></period>
+                                                                                                            <min
+                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                <average
+                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                    <max
+                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                        <ultimo
+                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                            <value>103.4969</value>
+                                                                                                                        </resultrows>
+                                                                                                                        <resultrows>
+                                                                                                                            <date>2018-12-28</date>
+                                                                                                                            <period></period>
+                                                                                                                            <min
+                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                <average
+                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                    <max
+                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                        <ultimo
+                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                            <value>102.4475</value>
+                                                                                                                                        </resultrows>
+                                                                                                                                        <resultrows>
+                                                                                                                                            <date>2019-01-02</date>
+                                                                                                                                            <period></period>
+                                                                                                                                            <min
+                                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                <average
+                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                    <max
+                                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                        <ultimo
+                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                            <value>102.8742</value>
+                                                                                                                                                        </resultrows>
+                                                                                                                                                        <resultrows>
+                                                                                                                                                            <date>2019-01-03</date>
+                                                                                                                                                            <period></period>
+                                                                                                                                                            <min
+                                                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                <average
+                                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                    <max
+                                                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                        <ultimo
+                                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                            <value>103.2522</value>
+                                                                                                                                                                        </resultrows>
+                                                                                                                                                                        <resultrows>
+                                                                                                                                                                            <date>2019-01-04</date>
+                                                                                                                                                                            <period></period>
+                                                                                                                                                                            <min
+                                                                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                <average
+                                                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                    <max
+                                                                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                        <ultimo
+                                                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                            <value>103.7646</value>
+                                                                                                                                                                                        </resultrows>
+                                                                                                                                                                                    </series>
+                                                                                                                                                                                </groups>
+                                                                                                                                                                                <groups>
+                                                                                                                                                                                    <groupid>4</groupid>
+                                                                                                                                                                                    <groupname>Swedish Market (based) rates</groupname>
+                                                                                                                                                                                    <series>
+                                                                                                                                                                                        <seriesid>SETB1MBENCHC             </seriesid>
+                                                                                                                                                                                        <seriesname>SE 1M</seriesname>
+                                                                                                                                                                                        <unit
+                                                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                            <resultrows>
+                                                                                                                                                                                                <date>2018-12-27</date>
+                                                                                                                                                                                                <period></period>
+                                                                                                                                                                                                <min
+                                                                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                    <average
+                                                                                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                        <max
+                                                                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                            <ultimo
+                                                                                                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                <value
+                                                                                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                </resultrows>
+                                                                                                                                                                                                                <resultrows>
+                                                                                                                                                                                                                    <date>2018-12-28</date>
+                                                                                                                                                                                                                    <period></period>
+                                                                                                                                                                                                                    <min
+                                                                                                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                        <average
+                                                                                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                            <max
+                                                                                                                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                <ultimo
+                                                                                                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                    <value
+                                                                                                                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                    </resultrows>
+                                                                                                                                                                                                                                    <resultrows>
+                                                                                                                                                                                                                                        <date>2019-01-02</date>
+                                                                                                                                                                                                                                        <period></period>
+                                                                                                                                                                                                                                        <min
+                                                                                                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                            <average
+                                                                                                                                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                <max
+                                                                                                                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                    <ultimo
+                                                                                                                                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                        <value
+                                                                                                                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                        </resultrows>
+                                                                                                                                                                                                                                                        <resultrows>
+                                                                                                                                                                                                                                                            <date>2019-01-03</date>
+                                                                                                                                                                                                                                                            <period></period>
+                                                                                                                                                                                                                                                            <min
+                                                                                                                                                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                <average
+                                                                                                                                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                    <max
+                                                                                                                                                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                        <ultimo
+                                                                                                                                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                            <value
+                                                                                                                                                                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                            </resultrows>
+                                                                                                                                                                                                                                                                            <resultrows>
+                                                                                                                                                                                                                                                                                <date>2019-01-04</date>
+                                                                                                                                                                                                                                                                                <period></period>
+                                                                                                                                                                                                                                                                                <min
+                                                                                                                                                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                                    <average
+                                                                                                                                                                                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                                        <max
+                                                                                                                                                                                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                                            <ultimo
+                                                                                                                                                                                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                                                <value
+                                                                                                                                                                                                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                                                                                                                                                                                </resultrows>
+                                                                                                                                                                                                                                                                                            </series>
+                                                                                                                                                                                                                                                                                        </groups>
+                                                                                                                                                                                                                                                                                    </return>
+                                                                                                                                                                                                                                                                                </ns2:getInterestAndExchangeRatesResponse>
+                                                                                                                                                                                                                                                                            </soap:Body>
+                                                                                                                                                                                                                                                                        </soap:Envelope>
