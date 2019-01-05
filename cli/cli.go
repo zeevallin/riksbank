@@ -11,9 +11,10 @@ import (
 type runner struct {
 	api *swea.Swea
 
-	lang string
-	from string
-	to   string
+	lang      string
+	from      string
+	to        string
+	aggregate string
 }
 
 var (
@@ -46,6 +47,7 @@ func Run(args []string) error {
 	app.Commands = []cli.Command{
 		r.cmdDays(),
 		r.cmdExchanges(),
+		r.cmdExchangeRates(),
 	}
 	app.Before = func(c *cli.Context) error {
 		return nil

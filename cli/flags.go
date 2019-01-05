@@ -30,3 +30,21 @@ func (r *runner) flagLang() *cli.StringFlag {
 		Value:       "en",
 	}
 }
+
+func (r *runner) flagAggregate() *cli.StringFlag {
+	return &cli.StringFlag{
+		Name:        "aggregate",
+		Usage:       "daily, weekly, monthly, quartery or yearly",
+		Destination: &r.aggregate,
+		Value:       "daily",
+	}
+}
+
+func (r *runner) flagCurrency() *cli.StringSliceFlag {
+	return &cli.StringSliceFlag{
+		Name:  "currency, c",
+		Usage: "eg. GBP",
+		// Destination: &r.currency,
+		// Value:       "",
+	}
+}
