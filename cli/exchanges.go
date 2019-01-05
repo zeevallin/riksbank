@@ -10,17 +10,19 @@ import (
 	"github.com/zeeraw/riksbank/swea"
 )
 
-func (r *runner) cmdCrossNames() cli.Command {
+func (r *runner) cmdExchanges() cli.Command {
 	return cli.Command{
-		Name:   "exchanges",
-		Action: r.actionCrossNames,
+		Name:      "exchanges",
+		Usage:     "Lists series for currency exchange rates to SEK",
+		UsageText: "foo",
+		Action:    r.actionExchanges,
 		Flags: []cli.Flag{
 			r.flagLang(),
 		},
 	}
 }
 
-func (r *runner) actionCrossNames(c *cli.Context) error {
+func (r *runner) actionExchanges(c *cli.Context) error {
 	ctx := context.Background()
 	req := &swea.GetAllCrossNamesRequest{
 		Language: swea.Language(r.lang),
