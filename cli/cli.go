@@ -46,9 +46,9 @@ func (t *Tool) Run(args []string) error {
 	app.Email = "zee@vall.in"
 	app.Commands = []cli.Command{
 		t.cmdRates(),
-		t.cmdDays(),
 		t.cmdSeries(),
 		t.cmdGroups(),
+		t.cmdDays(),
 		t.cmdExchange(),
 	}
 	app.Before = func(c *cli.Context) error {
