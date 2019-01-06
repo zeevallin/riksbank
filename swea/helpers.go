@@ -11,14 +11,6 @@ import (
 	"github.com/zeeraw/riksbank/swea/requests"
 )
 
-func isTrue(s string) bool {
-	switch strings.ToUpper(s) {
-	case "Y", "YES", "TRUE", "1":
-		return true
-	}
-	return false
-}
-
 func build(t *template.Template, req interface{}) (buf *bytes.Buffer, err error) {
 	buf = new(bytes.Buffer)
 	err = t.Execute(buf, req)

@@ -88,7 +88,7 @@ func (api *LiveAPI) GetCalendarDays(ctx context.Context, req *GetCalendarDaysReq
 			Date:      date,
 			Week:      week,
 			WeekYear:  weekYear,
-			IsBankDay: isTrue(r.Bankday.Text),
+			IsBankDay: util.ParseBool(strings.TrimSpace(r.Bankday.Text)),
 		}
 	}
 	return res, nil
