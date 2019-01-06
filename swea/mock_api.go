@@ -22,7 +22,7 @@ func NewMock() *MockAPI {
 			Series: []CrossSeriesInfo{},
 		},
 		GetCrossRatesResponse: &GetCrossRatesResponse{
-			CrossRates: []CrossRate{},
+			CrossRates: []CrossRateInfo{},
 		},
 		GetInterestAndExchangeRatesResponse: &GetInterestAndExchangeRatesResponse{
 			Rates: []RateInfo{},

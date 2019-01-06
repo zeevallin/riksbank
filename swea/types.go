@@ -30,15 +30,6 @@ type SearchGroupSeries struct {
 	SeriesID string
 }
 
-// CrossRate is an exchange rate between two currencies
-type CrossRate struct {
-	Base    Currency
-	Counter Currency
-	Date    time.Time
-	Period  string
-	Value   string
-}
-
 // CrossPair are the series to compare in a currency exchange
 type CrossPair struct {
 	Base    Series
@@ -51,6 +42,15 @@ func (cp CrossPair) ToCurrencyPair() CurrencyPair {
 		Base:    cp.Base.ToCurrency(),
 		Counter: cp.Counter.ToCurrency(),
 	}
+}
+
+// CrossRateInfo is an exchange rate between two currencies
+type CrossRateInfo struct {
+	Base    Currency
+	Counter Currency
+	Date    time.Time
+	Period  string
+	Value   string
 }
 
 // DayInfo represents a date in the context of the central bank
@@ -161,7 +161,7 @@ type GetCrossRatesRequest struct {
 
 // GetCrossRatesResponse contains exchange rates
 type GetCrossRatesResponse struct {
-	CrossRates []CrossRate
+	CrossRates []CrossRateInfo
 	CrossPairs []CrossPair
 
 	From            time.Time
