@@ -9,7 +9,7 @@ import (
 )
 
 type runner struct {
-	api *swea.Swea
+	api swea.Swea
 
 	lang      string
 	from      string
