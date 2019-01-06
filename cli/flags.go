@@ -40,11 +40,25 @@ func (r *runner) flagAggregate() *cli.StringFlag {
 	}
 }
 
+func (r *runner) flagAnalysis() *cli.StringFlag {
+	return &cli.StringFlag{
+		Name:        "analysis",
+		Usage:       "real, mean, min, max or ultimo",
+		Destination: &r.method,
+		Value:       "real",
+	}
+}
+
 func (r *runner) flagCurrency() *cli.StringSliceFlag {
 	return &cli.StringSliceFlag{
 		Name:  "currency, c",
 		Usage: "eg. GBP",
-		// Destination: &r.currency,
-		// Value:       "",
+	}
+}
+
+func (r *runner) flagSeries() *cli.StringSliceFlag {
+	return &cli.StringSliceFlag{
+		Name:  "series, s",
+		Usage: "eg. SETB1MBENCHC",
 	}
 }

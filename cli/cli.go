@@ -15,6 +15,7 @@ type runner struct {
 	from      string
 	to        string
 	aggregate string
+	method    string
 }
 
 var (
@@ -48,6 +49,7 @@ func Run(args []string) error {
 		r.cmdDays(),
 		r.cmdExchanges(),
 		r.cmdExchangeRates(),
+		r.cmdRates(),
 	}
 	app.Before = func(c *cli.Context) error {
 		return nil

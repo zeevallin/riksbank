@@ -40,7 +40,6 @@ func (r *runner) renderCrossNames(res *swea.GetAllCrossNamesResponse) {
 	defer w.Flush()
 	fmt.Fprintf(w, "ID\t Name\t Description\n")
 	for _, series := range res.Series {
-
 		fmt.Fprintf(w, "%s\t %s\t %s\n", series.ID, series.Name, series.Description[4:])
 	}
 }
