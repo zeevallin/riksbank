@@ -1,0 +1,564 @@
+<soap:Envelope
+    xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+    <soap:Body>
+        <ns2:getInterestAndExchangeNamesResponse
+            xmlns:ns2="http://swea.riksbank.se/xsd">
+            <return>
+                <datefrom>1993-01-04</datefrom>
+                <dateto>2002-02-28</dateto>
+                <description>ATS Austria, shilling</description>
+                <groupid>130</groupid>
+                <longdescription>Austrian shilling</longdescription>
+                <seriesid>SEKATSPMI</seriesid>
+                <shortdescription>ATS</shortdescription>
+                <source></source>
+                <type>S</type>
+            </return>
+            <return>
+                <datefrom>1993-01-04</datefrom>
+                <dateto
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    <description>AUD Australian, dollar</description>
+                    <groupid>130</groupid>
+                    <longdescription>Australian dollar</longdescription>
+                    <seriesid>SEKAUDPMI</seriesid>
+                    <shortdescription>AUD</shortdescription>
+                    <source>Nasdaq</source>
+                    <type>S</type>
+                </return>
+                <return>
+                    <datefrom>1993-01-04</datefrom>
+                    <dateto>2002-02-28</dateto>
+                    <description>BEF Belgien, franc</description>
+                    <groupid>130</groupid>
+                    <longdescription>Belgium franc</longdescription>
+                    <seriesid>SEKBEFPMI</seriesid>
+                    <shortdescription>BEF</shortdescription>
+                    <source></source>
+                    <type>S</type>
+                </return>
+                <return>
+                    <datefrom>2005-09-06</datefrom>
+                    <dateto
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <description>BRL Brazilien, real</description>
+                        <groupid>130</groupid>
+                        <longdescription>Brazil real</longdescription>
+                        <seriesid>SEKBRLPMI</seriesid>
+                        <shortdescription>BRL</shortdescription>
+                        <source>Nasdaq</source>
+                        <type>S</type>
+                    </return>
+                    <return>
+                        <datefrom>1993-01-04</datefrom>
+                        <dateto
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                            <description>CAD Canada, dollar</description>
+                            <groupid>130</groupid>
+                            <longdescription>Canadian dollar</longdescription>
+                            <seriesid>SEKCADPMI</seriesid>
+                            <shortdescription>CAD</shortdescription>
+                            <source>Nasdaq</source>
+                            <type>S</type>
+                        </return>
+                        <return>
+                            <datefrom>1993-01-04</datefrom>
+                            <dateto
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                <description>CHF Switzerland, francs</description>
+                                <groupid>130</groupid>
+                                <longdescription>Swiss francs</longdescription>
+                                <seriesid>SEKCHFPMI</seriesid>
+                                <shortdescription>CHF</shortdescription>
+                                <source>Nasdaq</source>
+                                <type>S</type>
+                            </return>
+                            <return>
+                                <datefrom>1994-03-01</datefrom>
+                                <dateto
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                    <description>CNY China, yuan renminbi</description>
+                                    <groupid>130</groupid>
+                                    <longdescription>Chinese yuan renminbi</longdescription>
+                                    <seriesid>SEKCNYPMI</seriesid>
+                                    <shortdescription>CNY</shortdescription>
+                                    <source>Nasdaq</source>
+                                    <type>S</type>
+                                </return>
+                                <return>
+                                    <datefrom>1998-01-02</datefrom>
+                                    <dateto>2007-12-28</dateto>
+                                    <description>CYP Cyprus, pound</description>
+                                    <groupid>130</groupid>
+                                    <longdescription>Cyprus pound</longdescription>
+                                    <seriesid>SEKCYPPMI</seriesid>
+                                    <shortdescription>CYP</shortdescription>
+                                    <source>Nasdaq</source>
+                                    <type>S</type>
+                                </return>
+                                <return>
+                                    <datefrom>1998-01-01</datefrom>
+                                    <dateto
+                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                        <description>CZK Czech Republic, koruna</description>
+                                        <groupid>130</groupid>
+                                        <longdescription>Czech koruna</longdescription>
+                                        <seriesid>SEKCZKPMI</seriesid>
+                                        <shortdescription>CZK</shortdescription>
+                                        <source>Nasdaq</source>
+                                        <type>S</type>
+                                    </return>
+                                    <return>
+                                        <datefrom>1993-01-04</datefrom>
+                                        <dateto>2002-02-28</dateto>
+                                        <description>DEM Germany, mark</description>
+                                        <groupid>130</groupid>
+                                        <longdescription>German mark</longdescription>
+                                        <seriesid>SEKDEMPMI</seriesid>
+                                        <shortdescription>DEM</shortdescription>
+                                        <source></source>
+                                        <type>S</type>
+                                    </return>
+                                    <return>
+                                        <datefrom>1993-01-04</datefrom>
+                                        <dateto
+                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                            <description>DKK Denmark, krone</description>
+                                            <groupid>130</groupid>
+                                            <longdescription>Danish krone</longdescription>
+                                            <seriesid>SEKDKKPMI</seriesid>
+                                            <shortdescription>DKK</shortdescription>
+                                            <source>Nasdaq</source>
+                                            <type>S</type>
+                                        </return>
+                                        <return>
+                                            <datefrom>1998-01-01</datefrom>
+                                            <dateto>2010-12-30</dateto>
+                                            <description>EEK Estonian, kroon</description>
+                                            <groupid>130</groupid>
+                                            <longdescription>Estonian kroon</longdescription>
+                                            <seriesid>SEKEEKPMI</seriesid>
+                                            <shortdescription>EEK</shortdescription>
+                                            <source>Nasdaq</source>
+                                            <type>S</type>
+                                        </return>
+                                        <return>
+                                            <datefrom>1993-01-04</datefrom>
+                                            <dateto>2002-02-28</dateto>
+                                            <description>ESP Spain, pesetas</description>
+                                            <groupid>130</groupid>
+                                            <longdescription>Spanish pesetas</longdescription>
+                                            <seriesid>SEKESPPMI</seriesid>
+                                            <shortdescription>ESP</shortdescription>
+                                            <source></source>
+                                            <type>S</type>
+                                        </return>
+                                        <return>
+                                            <datefrom>1993-01-04</datefrom>
+                                            <dateto
+                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                <description>EUR Euroland, euro</description>
+                                                <groupid>130</groupid>
+                                                <longdescription>Euroland euro</longdescription>
+                                                <seriesid>SEKEURPMI</seriesid>
+                                                <shortdescription>EUR</shortdescription>
+                                                <source>Nasdaq</source>
+                                                <type>S</type>
+                                            </return>
+                                            <return>
+                                                <datefrom>1993-01-04</datefrom>
+                                                <dateto>2002-02-28</dateto>
+                                                <description>FIM Finland, marka</description>
+                                                <groupid>130</groupid>
+                                                <longdescription>Finnish marka</longdescription>
+                                                <seriesid>SEKFIMPMI</seriesid>
+                                                <shortdescription>FIM</shortdescription>
+                                                <source></source>
+                                                <type>S</type>
+                                            </return>
+                                            <return>
+                                                <datefrom>1993-01-04</datefrom>
+                                                <dateto>2002-02-28</dateto>
+                                                <description>FRF France, franc</description>
+                                                <groupid>130</groupid>
+                                                <longdescription>French franc</longdescription>
+                                                <seriesid>SEKFRFPMI</seriesid>
+                                                <shortdescription>FRF</shortdescription>
+                                                <source></source>
+                                                <type>S</type>
+                                            </return>
+                                            <return>
+                                                <datefrom>1993-01-04</datefrom>
+                                                <dateto
+                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                    <description>GBP Great Britain, pound</description>
+                                                    <groupid>130</groupid>
+                                                    <longdescription>pound sterling</longdescription>
+                                                    <seriesid>SEKGBPPMI</seriesid>
+                                                    <shortdescription>GBP</shortdescription>
+                                                    <source>Nasdaq</source>
+                                                    <type>S</type>
+                                                </return>
+                                                <return>
+                                                    <datefrom>1993-01-04</datefrom>
+                                                    <dateto>2002-02-28</dateto>
+                                                    <description>GRD Greece, drachmer</description>
+                                                    <groupid>130</groupid>
+                                                    <longdescription>Greek drachmer</longdescription>
+                                                    <seriesid>SEKGRDPMI</seriesid>
+                                                    <shortdescription>GRD</shortdescription>
+                                                    <source></source>
+                                                    <type>S</type>
+                                                </return>
+                                                <return>
+                                                    <datefrom>1994-03-01</datefrom>
+                                                    <dateto
+                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                        <description>HKD Hong Kong, dollar</description>
+                                                        <groupid>130</groupid>
+                                                        <longdescription>Hong Kong dollar</longdescription>
+                                                        <seriesid>SEKHKDPMI</seriesid>
+                                                        <shortdescription>HKD</shortdescription>
+                                                        <source>Nasdaq</source>
+                                                        <type>S</type>
+                                                    </return>
+                                                    <return>
+                                                        <datefrom>1998-01-01</datefrom>
+                                                        <dateto
+                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                            <description>HUF Hungary, forint</description>
+                                                            <groupid>130</groupid>
+                                                            <longdescription>Hungarian forints</longdescription>
+                                                            <seriesid>SEKHUFPMI</seriesid>
+                                                            <shortdescription>HUF</shortdescription>
+                                                            <source>Nasdaq</source>
+                                                            <type>S</type>
+                                                        </return>
+                                                        <return>
+                                                            <datefrom>1998-01-01</datefrom>
+                                                            <dateto
+                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                <description>IDR Indonesia, rupiah</description>
+                                                                <groupid>130</groupid>
+                                                                <longdescription>Indonesian rupiah</longdescription>
+                                                                <seriesid>SEKIDRPMI</seriesid>
+                                                                <shortdescription>IDR</shortdescription>
+                                                                <source>Nasdaq</source>
+                                                                <type>S</type>
+                                                            </return>
+                                                            <return>
+                                                                <datefrom>1993-01-04</datefrom>
+                                                                <dateto>2002-02-28</dateto>
+                                                                <description>IEP Ireland, pund</description>
+                                                                <groupid>130</groupid>
+                                                                <longdescription>Irish pund</longdescription>
+                                                                <seriesid>SEKIEPPMI</seriesid>
+                                                                <shortdescription>IEP</shortdescription>
+                                                                <source></source>
+                                                                <type>S</type>
+                                                            </return>
+                                                            <return>
+                                                                <datefrom>1994-03-01</datefrom>
+                                                                <dateto
+                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                    <description>INR India, rupee</description>
+                                                                    <groupid>130</groupid>
+                                                                    <longdescription>Indian rupee</longdescription>
+                                                                    <seriesid>SEKINRPMI</seriesid>
+                                                                    <shortdescription>INR</shortdescription>
+                                                                    <source>Nasdaq</source>
+                                                                    <type>S</type>
+                                                                </return>
+                                                                <return>
+                                                                    <datefrom>1993-01-04</datefrom>
+                                                                    <dateto
+                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                        <description>ISK Iceland, kronor</description>
+                                                                        <groupid>130</groupid>
+                                                                        <longdescription>Icelandic kronor</longdescription>
+                                                                        <seriesid>SEKISKPMI</seriesid>
+                                                                        <shortdescription>ISK</shortdescription>
+                                                                        <source>Nasdaq</source>
+                                                                        <type>S</type>
+                                                                    </return>
+                                                                    <return>
+                                                                        <datefrom>1993-01-04</datefrom>
+                                                                        <dateto>2002-02-28</dateto>
+                                                                        <description>ITL Italy, lire</description>
+                                                                        <groupid>130</groupid>
+                                                                        <longdescription>Italian lire</longdescription>
+                                                                        <seriesid>SEKITLPMI</seriesid>
+                                                                        <shortdescription>ITL</shortdescription>
+                                                                        <source></source>
+                                                                        <type>S</type>
+                                                                    </return>
+                                                                    <return>
+                                                                        <datefrom>1993-01-04</datefrom>
+                                                                        <dateto
+                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                            <description>JPY Japan, yen</description>
+                                                                            <groupid>130</groupid>
+                                                                            <longdescription>Japanese yen</longdescription>
+                                                                            <seriesid>SEKJPYPMI</seriesid>
+                                                                            <shortdescription>JPY</shortdescription>
+                                                                            <source>Nasdaq</source>
+                                                                            <type>S</type>
+                                                                        </return>
+                                                                        <return>
+                                                                            <datefrom>2005-09-09</datefrom>
+                                                                            <dateto
+                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                <description>KRW South Korea, won</description>
+                                                                                <groupid>130</groupid>
+                                                                                <longdescription>South Korean won</longdescription>
+                                                                                <seriesid>SEKKRWPMI</seriesid>
+                                                                                <shortdescription>KRW</shortdescription>
+                                                                                <source>Nasdaq</source>
+                                                                                <type>S</type>
+                                                                            </return>
+                                                                            <return>
+                                                                                <datefrom>1994-03-01</datefrom>
+                                                                                <dateto>2005-02-28</dateto>
+                                                                                <description>KWD Kuwait, dinar</description>
+                                                                                <groupid>130</groupid>
+                                                                                <longdescription>Kuwaiti dinar</longdescription>
+                                                                                <seriesid>SEKKWDPMI</seriesid>
+                                                                                <shortdescription>KWD</shortdescription>
+                                                                                <source></source>
+                                                                                <type>S</type>
+                                                                            </return>
+                                                                            <return>
+                                                                                <datefrom>1998-01-01</datefrom>
+                                                                                <dateto>2014-12-30</dateto>
+                                                                                <description>LTL Lithuania,  litas</description>
+                                                                                <groupid>130</groupid>
+                                                                                <longdescription>Lithuanian litas</longdescription>
+                                                                                <seriesid>SEKLTLPMI</seriesid>
+                                                                                <shortdescription>LTL</shortdescription>
+                                                                                <source>Nasdaq</source>
+                                                                                <type>S</type>
+                                                                            </return>
+                                                                            <return>
+                                                                                <datefrom>1998-01-01</datefrom>
+                                                                                <dateto>2013-12-30</dateto>
+                                                                                <description>LVL Latvia, lat</description>
+                                                                                <groupid>130</groupid>
+                                                                                <longdescription>Latvian lat</longdescription>
+                                                                                <seriesid>SEKLVLPMI</seriesid>
+                                                                                <shortdescription>LVL</shortdescription>
+                                                                                <source>Nasdaq</source>
+                                                                                <type>S</type>
+                                                                            </return>
+                                                                            <return>
+                                                                                <datefrom>1998-01-01</datefrom>
+                                                                                <dateto
+                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                    <description>MAD Morocko, dirham</description>
+                                                                                    <groupid>130</groupid>
+                                                                                    <longdescription>Moroccan dirham (MAD)</longdescription>
+                                                                                    <seriesid>SEKMADPMI</seriesid>
+                                                                                    <shortdescription>MAD</shortdescription>
+                                                                                    <source>Nasdaq</source>
+                                                                                    <type>S</type>
+                                                                                </return>
+                                                                                <return>
+                                                                                    <datefrom>1998-01-01</datefrom>
+                                                                                    <dateto
+                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                        <description>MXN Mexico, nuevo peso</description>
+                                                                                        <groupid>130</groupid>
+                                                                                        <longdescription>Mexican nuevo peso</longdescription>
+                                                                                        <seriesid>SEKMXNPMI</seriesid>
+                                                                                        <shortdescription>MXN</shortdescription>
+                                                                                        <source>Nasdaq</source>
+                                                                                        <type>S</type>
+                                                                                    </return>
+                                                                                    <return>
+                                                                                        <datefrom>1994-03-01</datefrom>
+                                                                                        <dateto>2005-02-28</dateto>
+                                                                                        <description>MYR Malaysia, ringgit</description>
+                                                                                        <groupid>130</groupid>
+                                                                                        <longdescription>Malaysian ringgit</longdescription>
+                                                                                        <seriesid>SEKMYRPMI</seriesid>
+                                                                                        <shortdescription>MYR</shortdescription>
+                                                                                        <source></source>
+                                                                                        <type>S</type>
+                                                                                    </return>
+                                                                                    <return>
+                                                                                        <datefrom>1993-01-04</datefrom>
+                                                                                        <dateto>2002-02-28</dateto>
+                                                                                        <description>NLG Dutchland, guilder</description>
+                                                                                        <groupid>130</groupid>
+                                                                                        <longdescription>Dutch guilder</longdescription>
+                                                                                        <seriesid>SEKNLGPMI</seriesid>
+                                                                                        <shortdescription>NLG</shortdescription>
+                                                                                        <source></source>
+                                                                                        <type>S</type>
+                                                                                    </return>
+                                                                                    <return>
+                                                                                        <datefrom>1993-01-04</datefrom>
+                                                                                        <dateto
+                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                            <description>NOK Norway, krone</description>
+                                                                                            <groupid>130</groupid>
+                                                                                            <longdescription>Norwegian krone</longdescription>
+                                                                                            <seriesid>SEKNOKPMI</seriesid>
+                                                                                            <shortdescription>NOK</shortdescription>
+                                                                                            <source>Nasdaq</source>
+                                                                                            <type>S</type>
+                                                                                        </return>
+                                                                                        <return>
+                                                                                            <datefrom>1994-03-01</datefrom>
+                                                                                            <dateto
+                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                <description>NZD New Zealand, dollar</description>
+                                                                                                <groupid>130</groupid>
+                                                                                                <longdescription>New Zealand dollar</longdescription>
+                                                                                                <seriesid>SEKNZDPMI</seriesid>
+                                                                                                <shortdescription>NZD</shortdescription>
+                                                                                                <source>Nasdaq</source>
+                                                                                                <type>S</type>
+                                                                                            </return>
+                                                                                            <return>
+                                                                                                <datefrom>1998-01-01</datefrom>
+                                                                                                <dateto
+                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                    <description>PLN Poland, zloty</description>
+                                                                                                    <groupid>130</groupid>
+                                                                                                    <longdescription>Polish zloty (PLN)</longdescription>
+                                                                                                    <seriesid>SEKPLNPMI</seriesid>
+                                                                                                    <shortdescription>PLN</shortdescription>
+                                                                                                    <source>Nasdaq</source>
+                                                                                                    <type>S</type>
+                                                                                                </return>
+                                                                                                <return>
+                                                                                                    <datefrom>1993-01-04</datefrom>
+                                                                                                    <dateto>2002-02-28</dateto>
+                                                                                                    <description>PTE Portugal, escudo</description>
+                                                                                                    <groupid>130</groupid>
+                                                                                                    <longdescription>Portuguese escudo</longdescription>
+                                                                                                    <seriesid>SEKPTEPMI</seriesid>
+                                                                                                    <shortdescription>PTE</shortdescription>
+                                                                                                    <source></source>
+                                                                                                    <type>S</type>
+                                                                                                </return>
+                                                                                                <return>
+                                                                                                    <datefrom>1993-01-04</datefrom>
+                                                                                                    <dateto
+                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                        <description>RUB Russia, rouble</description>
+                                                                                                        <groupid>130</groupid>
+                                                                                                        <longdescription>Russian rouble</longdescription>
+                                                                                                        <seriesid>SEKRUBPMI</seriesid>
+                                                                                                        <shortdescription>RUB</shortdescription>
+                                                                                                        <source>Nasdaq</source>
+                                                                                                        <type>S</type>
+                                                                                                    </return>
+                                                                                                    <return>
+                                                                                                        <datefrom>1994-03-04</datefrom>
+                                                                                                        <dateto
+                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                            <description>SAR Saudi Arabia, riyal</description>
+                                                                                                            <groupid>130</groupid>
+                                                                                                            <longdescription>Saudi Arabian riyal</longdescription>
+                                                                                                            <seriesid>SEKSARPMI</seriesid>
+                                                                                                            <shortdescription>SAR</shortdescription>
+                                                                                                            <source>Nasdaq</source>
+                                                                                                            <type>S</type>
+                                                                                                        </return>
+                                                                                                        <return>
+                                                                                                            <datefrom>1994-03-01</datefrom>
+                                                                                                            <dateto
+                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                <description>SGD Singapore, dollar</description>
+                                                                                                                <groupid>130</groupid>
+                                                                                                                <longdescription>Singapore dollar</longdescription>
+                                                                                                                <seriesid>SEKSGDPMI</seriesid>
+                                                                                                                <shortdescription>SGD</shortdescription>
+                                                                                                                <source>Nasdaq</source>
+                                                                                                                <type>S</type>
+                                                                                                            </return>
+                                                                                                            <return>
+                                                                                                                <datefrom>1998-01-01</datefrom>
+                                                                                                                <dateto>2006-12-29</dateto>
+                                                                                                                <description>SIT Slovenia, tolar</description>
+                                                                                                                <groupid>130</groupid>
+                                                                                                                <longdescription>Slovenian tolar</longdescription>
+                                                                                                                <seriesid>SEKSITPMI</seriesid>
+                                                                                                                <shortdescription>SIT</shortdescription>
+                                                                                                                <source>Nasdaq</source>
+                                                                                                                <type>S</type>
+                                                                                                            </return>
+                                                                                                            <return>
+                                                                                                                <datefrom>2005-04-29</datefrom>
+                                                                                                                <dateto>2009-01-01</dateto>
+                                                                                                                <description>SKK Slovakia, koruna</description>
+                                                                                                                <groupid>130</groupid>
+                                                                                                                <longdescription>Slovakian koruna</longdescription>
+                                                                                                                <seriesid>SEKSKKPMI</seriesid>
+                                                                                                                <shortdescription>SKK</shortdescription>
+                                                                                                                <source>Nasdaq</source>
+                                                                                                                <type>S</type>
+                                                                                                            </return>
+                                                                                                            <return>
+                                                                                                                <datefrom>1998-01-01</datefrom>
+                                                                                                                <dateto
+                                                                                                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                    <description>THB Thailand, baht</description>
+                                                                                                                    <groupid>130</groupid>
+                                                                                                                    <longdescription>Thai baht</longdescription>
+                                                                                                                    <seriesid>SEKTHBPMI</seriesid>
+                                                                                                                    <shortdescription>THB</shortdescription>
+                                                                                                                    <source>Nasdaq</source>
+                                                                                                                    <type>S</type>
+                                                                                                                </return>
+                                                                                                                <return>
+                                                                                                                    <datefrom>1998-01-01</datefrom>
+                                                                                                                    <dateto>2004-12-30</dateto>
+                                                                                                                    <description>TRL Turkey, lira</description>
+                                                                                                                    <groupid>130</groupid>
+                                                                                                                    <longdescription>Turkish lira</longdescription>
+                                                                                                                    <seriesid>SEKTRLPMI</seriesid>
+                                                                                                                    <shortdescription>TRL</shortdescription>
+                                                                                                                    <source></source>
+                                                                                                                    <type>S</type>
+                                                                                                                </return>
+                                                                                                                <return>
+                                                                                                                    <datefrom>2005-01-03</datefrom>
+                                                                                                                    <dateto
+                                                                                                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                        <description>TRY Turkey, new lira</description>
+                                                                                                                        <groupid>130</groupid>
+                                                                                                                        <longdescription>Turkish new lira</longdescription>
+                                                                                                                        <seriesid>SEKTRYPMI</seriesid>
+                                                                                                                        <shortdescription>TRY</shortdescription>
+                                                                                                                        <source>Nasdaq</source>
+                                                                                                                        <type>S</type>
+                                                                                                                    </return>
+                                                                                                                    <return>
+                                                                                                                        <datefrom>1993-01-04</datefrom>
+                                                                                                                        <dateto
+                                                                                                                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                            <description>USD US, dollar</description>
+                                                                                                                            <groupid>130</groupid>
+                                                                                                                            <longdescription>US dollar</longdescription>
+                                                                                                                            <seriesid>SEKUSDPMI</seriesid>
+                                                                                                                            <shortdescription>USD</shortdescription>
+                                                                                                                            <source>Nasdaq</source>
+                                                                                                                            <type>S</type>
+                                                                                                                        </return>
+                                                                                                                        <return>
+                                                                                                                            <datefrom>1994-03-01</datefrom>
+                                                                                                                            <dateto
+                                                                                                                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                                                                                                                                <description>ZAR South Africa, rand</description>
+                                                                                                                                <groupid>130</groupid>
+                                                                                                                                <longdescription>South African rand</longdescription>
+                                                                                                                                <seriesid>SEKZARPMI</seriesid>
+                                                                                                                                <shortdescription>ZAR</shortdescription>
+                                                                                                                                <source>Nasdaq</source>
+                                                                                                                                <type>S</type>
+                                                                                                                            </return>
+                                                                                                                        </ns2:getInterestAndExchangeNamesResponse>
+                                                                                                                    </soap:Body>
+                                                                                                                </soap:Envelope>
