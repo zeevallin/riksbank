@@ -31,7 +31,7 @@ func (t *Tool) flagLang() *cli.StringFlag {
 func (t *Tool) flagAggregate() *cli.StringFlag {
 	return &cli.StringFlag{
 		Name:  "aggregate",
-		Usage: "daily, weekly, monthly, quartery or yearly",
+		Usage: "daily, weekly, monthly, quarterly or yearly",
 		Value: "daily",
 	}
 }
