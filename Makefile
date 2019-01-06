@@ -1,8 +1,5 @@
 prepare:
 
-gen: prepare
-	@packr
-
 install: prepare
 	@go get -u github.com/gobuffalo/packr/packr
 	@dep ensure -v -update
@@ -12,4 +9,7 @@ build: gen
 	-o build/riksbank
 
 test: gen
+gen: prepare
+	@packr
+
 	@go test -cover ./...
