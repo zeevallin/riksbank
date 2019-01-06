@@ -1,4 +1,5 @@
 [![GoDoc](https://godoc.org/github.com/zeeraw/riksbank?status.svg)](https://godoc.org/github.com/zeeraw/riksbank)
+[![Go Report Card](https://goreportcard.com/badge/github.com/zeeraw/riksbank)](https://goreportcard.com/report/github.com/zeeraw/riksbank)
 [![Build Status](https://travis-ci.org/zeeraw/riksbank.svg?branch=master)](https://travis-ci.org/zeeraw/riksbank)
 
 # riksbank
