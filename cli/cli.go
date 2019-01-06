@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"fmt"
 	"time"
 
 	"cloud.google.com/go/civil"
@@ -35,6 +36,9 @@ func New() *Tool {
 
 // Run will run the command line tool
 func (t *Tool) Run(args []string) error {
+	if len(args) <= 0 {
+		return fmt.Errorf("should at least have one argument")
+	}
 	app := cli.NewApp()
 	app.Name = "riksbank"
 	app.Usage = ""
