@@ -46,6 +46,20 @@ type CrossRate struct {
 	Value   string
 }
 
+// CrossPair are the series to compare in a currency exchange
+type CrossPair struct {
+	Base    Series
+	Counter Series
+}
+
+// ToCurrencyPair converts
+func (cp CrossPair) ToCurrencyPair() CurrencyPair {
+	return CurrencyPair{
+		Base:    cp.Base.ToCurrency(),
+		Counter: cp.Counter.ToCurrency(),
+	}
+}
+
 // SeriesInfo represents a interest or currency conversion series information
 type SeriesInfo struct {
 	ID          string
@@ -71,18 +85,13 @@ type RateInfo struct {
 	Value   string
 }
 
-// CrossPair are the series to compare in a currency exchange
-type CrossPair struct {
-	Base    Series
-	Counter Series
-}
+// GroupInfo represents a grouping of interest or exchange rates
+type GroupInfo struct {
+	ID       string
+	ParentID string
 
-// ToCurrencyPair converts
-func (cp CrossPair) ToCurrencyPair() CurrencyPair {
-	return CurrencyPair{
-		Base:    cp.Base.ToCurrency(),
-		Counter: cp.Counter.ToCurrency(),
-	}
+	Name        string
+	Description string
 }
 
 // GetCalendarDaysRequest represents the parameters to get all business days between two dates
@@ -160,4 +169,15 @@ type GetInterestAndExchangeRatesResponse struct {
 	Min     bool
 	Max     bool
 	Ultimo  bool
+}
+
+// GetInterestAndExchangeGroupNamesRequest represents the parameters to get a list of all groups
+type GetInterestAndExchangeGroupNamesRequest struct {
+	Language Language
+}
+
+// GetInterestAndExchangeGroupNamesResponse contains all groups
+type GetInterestAndExchangeGroupNamesResponse struct {
+	Groups   []GroupInfo
+	Language Language
 }

@@ -182,6 +182,33 @@ func (s *Swea) GetInterestAndExchangeRates(ctx context.Context, req *GetInterest
 	return res, nil
 }
 
+// GetInterestAndExchangeGroupNames returns all the groups of interest and exchange rates
+func (s *Swea) GetInterestAndExchangeGroupNames(ctx context.Context, req *GetInterestAndExchangeGroupNamesRequest) (*GetInterestAndExchangeGroupNamesResponse, error) {
+	body, err := build(tmpl("get_interest_and_exchange_group_names"), req)
+	if err != nil {
+		return nil, err
+	}
+	env := &responses.GetInterestAndExchangeGroupNamesResponseEnvelope{}
+	err = s.call(ctx, body, env)
+	if err != nil {
+		return nil, err
+	}
+	groups := make([]GroupInfo, len(env.Body.GetInterestAndExchangeGroupNamesResponse.Return))
+	for idx, g := range env.Body.GetInterestAndExchangeGroupNamesResponse.Return {
+		groups[idx] = GroupInfo{
+			ID:          strings.TrimSpace(g.Groupid.Text),
+			ParentID:    strings.TrimSpace(g.Parentgroupid.Text),
+			Name:        strings.TrimSpace(g.Groupname.Text),
+			Description: strings.TrimSpace(g.Groupdescription.Text),
+		}
+	}
+	res := &GetInterestAndExchangeGroupNamesResponse{
+		Language: req.Language,
+		Groups:   groups,
+	}
+	return res, nil
+}
+
 func parseDatePeriod(d, p string) (civil.Date, string, error) {
 	date, err := civil.ParseDate(strings.TrimSpace(d))
 	if err != nil {
