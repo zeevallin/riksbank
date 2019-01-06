@@ -93,7 +93,7 @@ func (t *Tool) renderRates(analysis swea.AnalysisMethod, res *swea.GetInterestAn
 	)
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
 	defer w.Flush()
-	fmt.Fprintf(os.Stdout, "Ranging from %s to %s\n", res.From.String(), res.To.String())
+	fmt.Fprintf(os.Stdout, "Ranging from %s to %s\n", formatDate(res.From), formatDate(res.To))
 	if res.AggregateMethod != swea.Daily {
 		fmt.Fprintf(os.Stdout, "Aggregating %s %s value\n\n", swea.AggregateName(res.AggregateMethod), analysis)
 	}

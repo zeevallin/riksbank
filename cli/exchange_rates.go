@@ -73,7 +73,7 @@ func (t *Tool) actionExchangeRates(c *cli.Context) error {
 func (t *Tool) renderExchangeRates(res *swea.GetCrossRatesResponse) {
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
 	defer w.Flush()
-	fmt.Fprintf(os.Stdout, "Ranging from %s to %s\n", res.From.String(), res.To.String())
+	fmt.Fprintf(os.Stdout, "Ranging from %s to %s\n", formatDate(res.From), formatDate(res.To))
 	if res.AggregateMethod != swea.Daily {
 		fmt.Fprintf(os.Stdout, "Aggregating %s avarage\n", swea.AggregateName(res.AggregateMethod))
 	}

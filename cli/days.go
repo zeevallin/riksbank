@@ -49,11 +49,11 @@ func (t *Tool) actionDays(c *cli.Context) error {
 }
 
 func (t *Tool) renderDays(res *swea.GetCalendarDaysResponse) {
-	fmt.Fprintf(os.Stdout, "Showing days between %s and %s\n\n", res.From.String(), res.To.String())
+	fmt.Fprintf(os.Stdout, "Showing days between %s and %s\n\n", formatDate(res.From), formatDate(res.To))
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
 	fmt.Fprintf(w, "Date\t Year\t Week\t Bank day\n")
 	for _, day := range res.Days {
-		fmt.Fprintf(w, "%s\t %d\t %d\t %s\n", day.Date.String(), day.WeekYear, day.Week, boolToYesNo(day.IsBankDay))
+		fmt.Fprintf(w, "%s\t %d\t %d\t %s\n", formatDate(day.Date), day.WeekYear, day.Week, boolToYesNo(day.IsBankDay))
 	}
 	defer w.Flush()
 }
