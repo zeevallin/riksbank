@@ -13,7 +13,7 @@ import (
 
 const (
 	daysName  = "days"
-	daysUsage = "Lists days and information about them between two dates"
+	daysUsage = "Lists days with relevant banking information between two dates"
 )
 
 func (r *runner) cmdDays() cli.Command {
