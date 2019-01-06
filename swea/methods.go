@@ -23,7 +23,7 @@ func (s *Swea) GetCalendarDays(ctx context.Context, req *GetCalendarDaysRequest)
 	res := &GetCalendarDaysResponse{
 		From: req.From,
 		To:   req.To,
-		Days: make([]Day, len(env.Body.GetCalendarDaysResponse.Return)),
+		Days: make([]DayInfo, len(env.Body.GetCalendarDaysResponse.Return)),
 	}
 	for idx, r := range env.Body.GetCalendarDaysResponse.Return {
 		date, err := civil.ParseDate(r.Caldate.Text)
@@ -38,7 +38,7 @@ func (s *Swea) GetCalendarDays(ctx context.Context, req *GetCalendarDaysRequest)
 		if err != nil {
 			return nil, err
 		}
-		res.Days[idx] = Day{
+		res.Days[idx] = DayInfo{
 			Date:      date,
 			Week:      week,
 			WeekYear:  weekYear,

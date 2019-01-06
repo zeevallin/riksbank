@@ -29,14 +29,6 @@ type SearchGroupSeries struct {
 	SeriesID string
 }
 
-// Day represents a date in the context of the central bank
-type Day struct {
-	Date      civil.Date
-	Week      int
-	WeekYear  int
-	IsBankDay bool
-}
-
 // CrossRate is an exchange rate between two currencies
 type CrossRate struct {
 	Base    Currency
@@ -58,6 +50,14 @@ func (cp CrossPair) ToCurrencyPair() CurrencyPair {
 		Base:    cp.Base.ToCurrency(),
 		Counter: cp.Counter.ToCurrency(),
 	}
+}
+
+// DayInfo represents a date in the context of the central bank
+type DayInfo struct {
+	Date      civil.Date
+	Week      int
+	WeekYear  int
+	IsBankDay bool
 }
 
 // CrossSeriesInfo represents a interest or currency conversion series information
@@ -117,7 +117,7 @@ type GetCalendarDaysRequest struct {
 type GetCalendarDaysResponse struct {
 	From civil.Date
 	To   civil.Date
-	Days []Day
+	Days []DayInfo
 }
 
 // GetAllCrossNamesRequest represents the parameters get all the exchange rate series suitable for cross rate names
