@@ -2,6 +2,7 @@ package swea
 
 import (
 	"context"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -193,7 +194,7 @@ func (s *Swea) GetInterestAndExchangeGroupNames(ctx context.Context, req *GetInt
 	if err != nil {
 		return nil, err
 	}
-	groups := make([]GroupInfo, len(env.Body.GetInterestAndExchangeGroupNamesResponse.Return))
+	groups := make(GroupsInfo, len(env.Body.GetInterestAndExchangeGroupNamesResponse.Return))
 	for idx, g := range env.Body.GetInterestAndExchangeGroupNamesResponse.Return {
 		groups[idx] = GroupInfo{
 			ID:          strings.TrimSpace(g.Groupid.Text),
@@ -202,6 +203,7 @@ func (s *Swea) GetInterestAndExchangeGroupNames(ctx context.Context, req *GetInt
 			Description: strings.TrimSpace(g.Groupdescription.Text),
 		}
 	}
+	sort.Sort(groups)
 	res := &GetInterestAndExchangeGroupNamesResponse{
 		Language: req.Language,
 		Groups:   groups,

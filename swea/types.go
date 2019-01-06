@@ -1,6 +1,8 @@
 package swea
 
 import (
+	"strconv"
+
 	"cloud.google.com/go/civil"
 )
 
@@ -105,6 +107,29 @@ type GroupInfo struct {
 
 	Name        string
 	Description string
+}
+
+// GroupsInfo represents several groups group info
+type GroupsInfo []GroupInfo
+
+func (gis GroupsInfo) Len() int {
+	return len(gis)
+}
+
+func (gis GroupsInfo) Swap(i, j int) {
+	gis[i], gis[j] = gis[j], gis[i]
+}
+
+func (gis GroupsInfo) Less(i, j int) bool {
+	a, err := strconv.Atoi(gis[i].ID)
+	if err != nil {
+		a = 0
+	}
+	b, err := strconv.Atoi(gis[j].ID)
+	if err != nil {
+		b = 0
+	}
+	return a < b
 }
 
 // GetCalendarDaysRequest represents the parameters to get all business days between two dates
