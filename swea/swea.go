@@ -51,7 +51,7 @@ func (s *Swea) call(ctx context.Context, body io.Reader, v interface{}) error {
 		return err
 	}
 	req.Header.Add("Content-Type", contentType)
-	req.WithContext(ctx)
+	req = req.WithContext(ctx)
 
 	// Perform the request
 	res, err := s.client.Do(req)
