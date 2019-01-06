@@ -23,6 +23,12 @@ func (s Series) ToCurrency() Currency {
 	return ParseCurrency(string(s))
 }
 
+// SearchGroupSeries represents searchable group series
+type SearchGroupSeries struct {
+	GroupID  string
+	SeriesID string
+}
+
 // Day represents a date in the context of the central bank
 type Day struct {
 	Date      civil.Date
@@ -45,6 +51,24 @@ type SeriesInfo struct {
 	ID          string
 	Name        string
 	Description string
+}
+
+// RateInfo represents information about a rate for a series in a period
+type RateInfo struct {
+	GroupID   string
+	GroupName string
+
+	SeriesID   string
+	SeriesName string
+
+	Date   civil.Date
+	Period string
+
+	Average string
+	Min     string
+	Max     string
+	Ultimo  string
+	Value   string
 }
 
 // CrossPair are the series to compare in a currency exchange
@@ -104,4 +128,36 @@ type GetCrossRatesResponse struct {
 	To              civil.Date
 	Language        Language
 	AggregateMethod AggregateMethod
+}
+
+// GetInterestAndExchangeRatesRequest represents the parameters to get exchange and interest rates
+type GetInterestAndExchangeRatesRequest struct {
+	Series []SearchGroupSeries
+
+	From            civil.Date
+	To              civil.Date
+	Language        Language
+	AggregateMethod AggregateMethod
+
+	Average bool
+	Min     bool
+	Max     bool
+	Ultimo  bool
+}
+
+// GetInterestAndExchangeRatesResponse contains interest and exchange rates
+type GetInterestAndExchangeRatesResponse struct {
+	Rates []RateInfo
+
+	Series []SearchGroupSeries
+
+	From            civil.Date
+	To              civil.Date
+	Language        Language
+	AggregateMethod AggregateMethod
+
+	Average bool
+	Min     bool
+	Max     bool
+	Ultimo  bool
 }

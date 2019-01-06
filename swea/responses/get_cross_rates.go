@@ -4,8 +4,8 @@ import (
 	"encoding/xml"
 )
 
-// GetCrossRatesResponse was generated 2019-01-05 16:57:28
-type GetCrossRatesResponse struct {
+// GetCrossRatesResponseEnvelope was generated 2019-01-05 16:57:28
+type GetCrossRatesResponseEnvelope struct {
 	XMLName xml.Name `xml:"Envelope"`
 	Text    string   `xml:",chardata"`
 	Soap    string   `xml:"soap,attr"`

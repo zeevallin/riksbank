@@ -1,0 +1,23 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsd="http://swea.riksbank.se/xsd">
+<soap:Header/>
+	<soap:Body>
+	<xsd:getInterestAndExchangeRates>
+         <searchRequestParameters>
+            <datefrom>{{ fmtDate .From }}</datefrom>
+            <dateto>{{ fmtDate .To }}</dateto>
+            <languageid>{{ .Language }}</languageid>
+            <aggregateMethod>{{ .AggregateMethod }}</aggregateMethod>
+            <avg>{{ fmtBool .Average }}</avg>
+            <max>{{ fmtBool .Max }}</max>
+            <min>{{ fmtBool .Min }}</min>
+            {{- range .Series }}
+            <searchGroupSeries>
+               <groupid>{{ .GroupID }}</groupid>
+               <seriesid>{{ .SeriesID }}</seriesid>
+            </searchGroupSeries>
+            {{- end }}
+	    <ultimo>false</ultimo>
+         </searchRequestParameters>
+      </xsd:getInterestAndExchangeRates>   
+      </soap:Body>
+</soap:Envelope>

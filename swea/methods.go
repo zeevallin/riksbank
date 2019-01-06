@@ -56,6 +56,9 @@ func (s *Swea) GetAllCrossNames(ctx context.Context, req *GetAllCrossNamesReques
 	}
 	env := &responses.GetAllCrossNamesResponseEnvelope{}
 	err = s.call(ctx, body, env)
+	if err != nil {
+		return nil, err
+	}
 	res := &GetAllCrossNamesResponse{
 		Language: req.Language,
 		Series:   make([]SeriesInfo, len(env.Body.GetAllCrossNamesResponse.Return)),
@@ -76,8 +79,11 @@ func (s *Swea) GetCrossRates(ctx context.Context, req *GetCrossRatesRequest) (*G
 	if err != nil {
 		return nil, err
 	}
-	env := &responses.GetCrossRatesResponse{}
+	env := &responses.GetCrossRatesResponseEnvelope{}
 	err = s.call(ctx, body, env)
+	if err != nil {
+		return nil, err
+	}
 	res := &GetCrossRatesResponse{
 		CrossPairs:      req.CrossPairs,
 		From:            req.From,
@@ -119,4 +125,75 @@ func (s *Swea) GetCrossRates(ctx context.Context, req *GetCrossRatesRequest) (*G
 	}
 	res.CrossRates = crossRates
 	return res, nil
+}
+
+// GetInterestAndExchangeRates returns values that are aggregated and grouped according to selected aggregate method
+func (s *Swea) GetInterestAndExchangeRates(ctx context.Context, req *GetInterestAndExchangeRatesRequest) (*GetInterestAndExchangeRatesResponse, error) {
+	body, err := build(tmpl("get_interest_and_exchange_rates"), req)
+	if err != nil {
+		return nil, err
+	}
+	env := &responses.GetInterestAndExchangeRatesResponseEnvelope{}
+	err = s.call(ctx, body, env)
+	if err != nil {
+		return nil, err
+	}
+	res := &GetInterestAndExchangeRatesResponse{
+		From:            req.From,
+		To:              req.To,
+		Average:         req.Average,
+		Min:             req.Min,
+		Max:             req.Max,
+		Language:        req.Language,
+		AggregateMethod: req.AggregateMethod,
+		Series:          req.Series,
+	}
+	ret := env.Body.GetInterestAndExchangeRatesResponse.Return
+	rates := []RateInfo{}
+	for _, gs := range ret.Groups {
+		groupID := strings.TrimSpace(gs.Groupid.Text)
+		groupName := strings.TrimSpace(gs.Groupname.Text)
+		for _, ss := range gs.Series {
+			seriesID := strings.TrimSpace(ss.Seriesid.Text)
+			seriesName := strings.TrimSpace(ss.Seriesname.Text)
+			for _, rr := range ss.Resultrows {
+				date, period, err := parseDatePeriod(rr.Date.Text, rr.Period.Text)
+				if err != nil {
+					return nil, err
+				}
+				ri := RateInfo{
+					GroupID:    groupID,
+					GroupName:  groupName,
+					SeriesID:   seriesID,
+					SeriesName: seriesName,
+					Date:       date,
+					Period:     period,
+					Average:    strings.TrimSpace(rr.Average.Text),
+					Min:        strings.TrimSpace(rr.Min.Text),
+					Max:        strings.TrimSpace(rr.Max.Text),
+					Ultimo:     strings.TrimSpace(rr.Ultimo.Text),
+					Value:      strings.TrimSpace(rr.Value.Text),
+				}
+				rates = append(rates, ri)
+			}
+		}
+	}
+	res.Rates = rates
+	return res, nil
+}
+
+func parseDatePeriod(d, p string) (civil.Date, string, error) {
+	date, err := civil.ParseDate(strings.TrimSpace(d))
+	if err != nil {
+		return date, "", err
+	}
+	var period string
+	ptx := strings.TrimSpace(p)
+	if ptx != "" {
+		period = ptx
+	} else {
+		period = date.String()
+	}
+
+	return date, period, nil
 }
