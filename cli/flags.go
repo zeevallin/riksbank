@@ -59,6 +59,12 @@ func (r *runner) flagCurrency() *cli.StringSliceFlag {
 func (r *runner) flagSeries() *cli.StringSliceFlag {
 	return &cli.StringSliceFlag{
 		Name:  "series, s",
-		Usage: "eg. SETB1MBENCHC",
+		Usage: "series id (eg. SETB1MBENCHC)",
+	}
+}
+func (r *runner) flagGroup() *cli.StringSliceFlag {
+	return &cli.StringSliceFlag{
+		Name:  "group, g",
+		Usage: "group id (eg. 1), if none provided all groups will be shown",
 	}
 }

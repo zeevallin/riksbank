@@ -48,6 +48,7 @@ func Run(args []string) error {
 	app.Commands = []cli.Command{
 		r.cmdRates(),
 		r.cmdDays(),
+		r.cmdSeries(),
 		r.cmdGroups(),
 		r.cmdExchanges(),
 		r.cmdExchangeRates(),
