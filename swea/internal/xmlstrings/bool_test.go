@@ -20,9 +20,10 @@ func Test_ParseBool(t *testing.T) {
 		{"0", false},
 		{"FALSE", false},
 		{"SOMETHING", false},
+		{"  true \n", true},
 	}
 	for _, c := range cases {
-		t.Run(c.value, func(t *testing.T) {
+		t.Run("", func(t *testing.T) {
 			actual := xmlstrings.ParseBool(c.value)
 			if actual != c.expected {
 				t.Errorf("expected %q to be %v, was %v", c.value, c.expected, actual)
