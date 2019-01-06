@@ -7,6 +7,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+
+	"github.com/davecgh/go-spew/spew"
 )
 
 const (
@@ -60,8 +62,10 @@ func (s *Swea) call(ctx context.Context, body io.Reader, v interface{}) error {
 	}
 	defer res.Body.Close()
 
+	utf8 := NewValidUTF8Reader(res.Body)
+
 	// Read the response
-	bts, err := ioutil.ReadAll(res.Body)
+	bts, err := ioutil.ReadAll(utf8)
 	if err != nil {
 		return err
 	}
