@@ -121,14 +121,8 @@ func (gis GroupsInfo) Swap(i, j int) {
 }
 
 func (gis GroupsInfo) Less(i, j int) bool {
-	a, err := strconv.Atoi(gis[i].ID)
-	if err != nil {
-		a = 0
-	}
-	b, err := strconv.Atoi(gis[j].ID)
-	if err != nil {
-		b = 0
-	}
+	a, _ := strconv.Atoi(gis[i].ID)
+	b, _ := strconv.Atoi(gis[j].ID)
 	return a < b
 }
 
