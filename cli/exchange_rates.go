@@ -43,15 +43,15 @@ func (t *Tool) actionExchangeRates(c *cli.Context) error {
 	for idx, c := range cs {
 		pairs[idx] = swea.ParseCurrencyPair(c).ToCrossPair()
 	}
-	from, err := civil.ParseDate(t.from)
+	from, err := civil.ParseDate(c.String("from"))
 	if err != nil {
 		return err
 	}
-	to, err := civil.ParseDate(t.to)
+	to, err := civil.ParseDate(c.String("to"))
 	if err != nil {
 		return err
 	}
-	method, err := swea.ParseAggregate(t.aggregate)
+	method, err := swea.ParseAggregate(c.String("aggregate"))
 	if err != nil {
 		return err
 	}
@@ -59,7 +59,7 @@ func (t *Tool) actionExchangeRates(c *cli.Context) error {
 		CrossPairs:      pairs,
 		From:            from,
 		To:              to,
-		Language:        swea.Language(t.lang),
+		Language:        swea.Language(c.String("lang")),
 		AggregateMethod: method,
 	}
 	res, err := t.API.GetCrossRates(ctx, req)

@@ -65,7 +65,7 @@ func (t *Tool) actionRates(c *cli.Context) error {
 	req := &swea.GetInterestAndExchangeRatesRequest{
 		From:            from,
 		To:              to,
-		Language:        swea.Language(t.lang),
+		Language:        swea.Language(c.String("lang")),
 		AggregateMethod: aggregate,
 		Series:          series,
 	}

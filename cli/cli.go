@@ -11,12 +11,6 @@ import (
 // Tool represents the command line tool for riksbank
 type Tool struct {
 	API swea.Swea
-
-	lang      string
-	from      string
-	to        string
-	aggregate string
-	method    string
 }
 
 var (

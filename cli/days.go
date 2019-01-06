@@ -30,11 +30,11 @@ func (t *Tool) cmdDays() cli.Command {
 
 func (t *Tool) actionDays(c *cli.Context) error {
 	ctx := context.Background()
-	from, err := civil.ParseDate(t.from)
+	from, err := civil.ParseDate(c.String("from"))
 	if err != nil {
 		return err
 	}
-	to, err := civil.ParseDate(t.to)
+	to, err := civil.ParseDate(c.String("to"))
 	if err != nil {
 		return err
 	}

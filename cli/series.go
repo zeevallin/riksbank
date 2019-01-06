@@ -29,7 +29,7 @@ func (t *Tool) cmdSeries() cli.Command {
 
 func (t *Tool) actionSeries(c *cli.Context) error {
 	ctx := context.Background()
-	lang := swea.Language(t.lang)
+	lang := swea.Language(c.String("lang"))
 
 	greq := &swea.GetInterestAndExchangeGroupNamesRequest{
 		Language: lang,

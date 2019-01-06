@@ -6,46 +6,41 @@ import (
 
 func (t *Tool) flagFrom() *cli.StringFlag {
 	return &cli.StringFlag{
-		Name:        "from",
-		Usage:       "date where the series start",
-		Value:       defaultFrom,
-		Destination: &t.from,
+		Name:  "from",
+		Usage: "date where the series start",
+		Value: defaultFrom,
 	}
 }
 
 func (t *Tool) flagTo() *cli.StringFlag {
 	return &cli.StringFlag{
-		Name:        "to",
-		Usage:       "date where the series end",
-		Value:       defaultTo,
-		Destination: &t.to,
+		Name:  "to",
+		Usage: "date where the series end",
+		Value: defaultTo,
 	}
 }
 
 func (t *Tool) flagLang() *cli.StringFlag {
 	return &cli.StringFlag{
-		Name:        "lang",
-		Usage:       "en or sv",
-		Destination: &t.lang,
-		Value:       "en",
+		Name:  "lang",
+		Usage: "en or sv",
+		Value: "en",
 	}
 }
 
 func (t *Tool) flagAggregate() *cli.StringFlag {
 	return &cli.StringFlag{
-		Name:        "aggregate",
-		Usage:       "daily, weekly, monthly, quartery or yearly",
-		Destination: &t.aggregate,
-		Value:       "daily",
+		Name:  "aggregate",
+		Usage: "daily, weekly, monthly, quartery or yearly",
+		Value: "daily",
 	}
 }
 
 func (t *Tool) flagAnalysis() *cli.StringFlag {
 	return &cli.StringFlag{
-		Name:        "analysis",
-		Usage:       "real, mean, min, max or ultimo",
-		Destination: &t.method,
-		Value:       "real",
+		Name:  "analysis",
+		Usage: "real, mean, min, max or ultimo",
+		Value: "real",
 	}
 }
 

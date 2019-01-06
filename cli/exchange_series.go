@@ -29,7 +29,7 @@ func (t *Tool) cmdExchangeSeries() cli.Command {
 func (t *Tool) actionExchangeSeries(c *cli.Context) error {
 	ctx := context.Background()
 	req := &swea.GetAllCrossNamesRequest{
-		Language: swea.Language(t.lang),
+		Language: swea.Language(c.String("lang")),
 	}
 	res, err := t.API.GetAllCrossNames(ctx, req)
 	if err != nil {

@@ -29,7 +29,7 @@ func (t *Tool) cmdGroups() cli.Command {
 func (t *Tool) actionGroups(c *cli.Context) error {
 	ctx := context.Background()
 	req := &swea.GetInterestAndExchangeGroupNamesRequest{
-		Language: swea.Language(t.lang),
+		Language: swea.Language(c.String("lang")),
 	}
 
 	res, err := t.API.GetInterestAndExchangeGroupNames(ctx, req)
