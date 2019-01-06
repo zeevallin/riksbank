@@ -5,8 +5,7 @@ install: prepare
 	@dep ensure -v -update
 	
 build: gen
-	@go build \
-	-o build/riksbank
+	@go build -o build/riksbank cmd/riksbank/*.go
 
 gen: prepare
 	@packr
