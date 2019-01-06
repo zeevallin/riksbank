@@ -13,10 +13,15 @@ import (
 	"github.com/zeeraw/riksbank/swea"
 )
 
+const (
+	exchangeRatesName  = "exchange_rates"
+	exchangeRatesUsage = "Lists the exchange rates between two dates"
+)
+
 func (r *runner) cmdExchangeRates() cli.Command {
 	return cli.Command{
-		Name:   "exchange_rates",
-		Usage:  "Lists the exchange rates per day",
+		Name:   exchangeRatesName,
+		Usage:  exchangeRatesUsage,
 		Action: r.actionExchangeRates,
 		Flags: []cli.Flag{
 			r.flagFrom(),
