@@ -72,7 +72,7 @@ func (api *LiveAPI) GetCalendarDays(ctx context.Context, req *GetCalendarDaysReq
 		Days: make([]DayInfo, len(env.Body.GetCalendarDaysResponse.Return)),
 	}
 	for idx, r := range env.Body.GetCalendarDaysResponse.Return {
-		date := xmlstrings.ParseDate(strings.TrimSpace(r.Caldate.Text))
+		date := xmlstrings.ParseDate(r.Caldate.Text)
 		week, err := strconv.Atoi(r.Week.Text)
 		if err != nil {
 			return nil, err
@@ -138,7 +138,7 @@ func (api *LiveAPI) GetCrossRates(ctx context.Context, req *GetCrossRatesRequest
 	var crossRates = []CrossRate{}
 	for _, s := range env.Body.GetCrossRatesResponse.Return.Groups.Series {
 		for _, rr := range s.Resultrows {
-			date, period := xmlstrings.ParseDatePeriod(strings.TrimSpace(rr.Date), strings.TrimSpace(rr.Period.Text))
+			date, period := xmlstrings.ParseDatePeriod(rr.Date, rr.Period.Text)
 			var value string
 			switch req.AggregateMethod {
 			case Weekly, Monthly, Quarterly, Yearly:
@@ -190,7 +190,7 @@ func (api *LiveAPI) GetInterestAndExchangeRates(ctx context.Context, req *GetInt
 			seriesID := strings.TrimSpace(ss.Seriesid.Text)
 			seriesName := strings.TrimSpace(ss.Seriesname.Text)
 			for _, rr := range ss.Resultrows {
-				date, period := xmlstrings.ParseDatePeriod(strings.TrimSpace(rr.Date.Text), strings.TrimSpace(rr.Period.Text))
+				date, period := xmlstrings.ParseDatePeriod(rr.Date.Text, rr.Period.Text)
 				ri := RateInfo{
 					GroupID:    groupID,
 					GroupName:  groupName,
@@ -262,8 +262,8 @@ func (api *LiveAPI) GetInterestAndExchangeNames(ctx context.Context, req *GetInt
 			LongDescription: strings.TrimSpace(s.Longdescription.Text),
 			Source:          strings.TrimSpace(s.Source.Text),
 			Type:            strings.TrimSpace(s.Type.Text),
-			From:            xmlstrings.ParseDate(strings.TrimSpace(s.Datefrom.Text)),
-			To:              xmlstrings.ParseDate(strings.TrimSpace(s.Dateto.Text)),
+			From:            xmlstrings.ParseDate(s.Datefrom.Text),
+			To:              xmlstrings.ParseDate(s.Dateto.Text),
 		}
 	}
 	res := &GetInterestAndExchangeNamesResponse{

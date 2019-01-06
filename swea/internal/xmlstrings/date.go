@@ -1,6 +1,7 @@
 package xmlstrings
 
 import (
+	"strings"
 	"time"
 )
 
@@ -11,7 +12,7 @@ const (
 
 // ParseDate attempts to turn a date string into a time object
 func ParseDate(s string) time.Time {
-	t, err := time.Parse(DateLayout, s)
+	t, err := time.Parse(DateLayout, strings.TrimSpace(s))
 	if err != nil {
 		return time.Date(0, 0, 0, 0, 0, 0, 0, time.UTC)
 	}
@@ -20,6 +21,7 @@ func ParseDate(s string) time.Time {
 
 // ParseDatePeriod attempts to turn a date and priod into usable values
 func ParseDatePeriod(d, p string) (time.Time, string) {
+	p = strings.TrimSpace(p)
 	date := ParseDate(d)
 	if p == "" {
 		p = date.Format(DateLayout)

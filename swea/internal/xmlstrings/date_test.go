@@ -15,6 +15,7 @@ func Test_ParseDate(t *testing.T) {
 	}{
 		{"2018-01-01", time.Date(2018, 1, 1, 0, 0, 0, 0, time.UTC)},
 		{"1991-09-13", time.Date(1991, 9, 13, 0, 0, 0, 0, time.UTC)},
+		{"  1820-12-06\n", time.Date(1820, 12, 06, 0, 0, 0, 0, time.UTC)},
 		{"foobar", time.Date(0, 0, 0, 0, 0, 0, 0, time.UTC)},
 	}
 	for _, c := range cases {
@@ -36,6 +37,7 @@ func Test_ParseDatePeriod(t *testing.T) {
 	}{
 		{"2018-01-01", "2018-01-01", "2018-01-01", time.Date(2018, 1, 1, 0, 0, 0, 0, time.UTC)},
 		{"1991-09-13", "", "1991-09-13", time.Date(1991, 9, 13, 0, 0, 0, 0, time.UTC)},
+		{"  1820-12-06\n", "   \n", "1820-12-06", time.Date(1820, 12, 06, 0, 0, 0, 0, time.UTC)},
 		{"foobar", "", "-0001-11-30", time.Date(0, 0, 0, 0, 0, 0, 0, time.UTC)},
 	}
 	for _, c := range cases {
