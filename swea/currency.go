@@ -11,6 +11,10 @@ const (
 	sek = "SEK"
 )
 
+var (
+	pcpRegex = regexp.MustCompile(`[/\-:]`)
+)
+
 // Currency is a ISO standard name for a currency
 type Currency string
 
@@ -38,8 +42,7 @@ type CurrencyPair struct {
 
 // ParseCurrencyPair will attempt to turn a string into a currency pair
 func ParseCurrencyPair(s string) CurrencyPair {
-	re := regexp.MustCompile(`[/-:]`)
-	split := re.Split(s, -1)
+	split := pcpRegex.Split(s, -1)
 	if len(split) > 1 {
 		return CurrencyPair{
 			Base:    ParseCurrency(split[0]),
