@@ -11,22 +11,22 @@ import (
 )
 
 const (
-	exchangesName  = "exchanges"
-	exchangesUsage = "Lists series for currency exchange rates to SEK"
+	exchangeSeriesName  = "series"
+	exchangeSeriesUsage = "Lists series for currency exchange rates to SEK"
 )
 
-func (r *runner) cmdExchanges() cli.Command {
+func (r *runner) cmdExchangeSeries() cli.Command {
 	return cli.Command{
-		Name:   exchangesName,
-		Usage:  exchangesUsage,
-		Action: r.actionExchanges,
+		Name:   exchangeSeriesName,
+		Usage:  exchangeSeriesUsage,
+		Action: r.actionExchangeSeries,
 		Flags: []cli.Flag{
 			r.flagLang(),
 		},
 	}
 }
 
-func (r *runner) actionExchanges(c *cli.Context) error {
+func (r *runner) actionExchangeSeries(c *cli.Context) error {
 	ctx := context.Background()
 	req := &swea.GetAllCrossNamesRequest{
 		Language: swea.Language(r.lang),
@@ -35,11 +35,11 @@ func (r *runner) actionExchanges(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	r.renderCrossNames(res)
+	r.renderExchangeSeries(res)
 	return nil
 }
 
-func (r *runner) renderCrossNames(res *swea.GetAllCrossNamesResponse) {
+func (r *runner) renderExchangeSeries(res *swea.GetAllCrossNamesResponse) {
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
 	defer w.Flush()
 	fmt.Fprintf(w, "ID\t Name\t Description\n")

@@ -50,8 +50,7 @@ func Run(args []string) error {
 		r.cmdDays(),
 		r.cmdSeries(),
 		r.cmdGroups(),
-		r.cmdExchanges(),
-		r.cmdExchangeRates(),
+		r.cmdExchange(),
 	}
 	app.Before = func(c *cli.Context) error {
 		return nil

@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	exchangeRatesName  = "exchange_rates"
+	exchangeRatesName  = "rates"
 	exchangeRatesUsage = "Lists the exchange rates between two dates"
 )
 
