@@ -60,11 +60,24 @@ func (cp CrossPair) ToCurrencyPair() CurrencyPair {
 	}
 }
 
-// SeriesInfo represents a interest or currency conversion series information
-type SeriesInfo struct {
+// CrossSeriesInfo represents a interest or currency conversion series information
+type CrossSeriesInfo struct {
 	ID          string
 	Name        string
 	Description string
+}
+
+// SeriesInfo represents a interest or currency conversion series information
+type SeriesInfo struct {
+	ID              string
+	GroupID         string
+	Name            string
+	Description     string
+	LongDescription string
+	Source          string
+	Type            string
+	From            *civil.Date
+	To              *civil.Date
 }
 
 // RateInfo represents information about a rate for a series in a period
@@ -115,7 +128,7 @@ type GetAllCrossNamesRequest struct {
 // GetAllCrossNamesResponse contains the currency conversion series
 type GetAllCrossNamesResponse struct {
 	Language Language
-	Series   []SeriesInfo
+	Series   []CrossSeriesInfo
 }
 
 // GetCrossRatesRequest represents the parameters to get all change rates
@@ -179,5 +192,18 @@ type GetInterestAndExchangeGroupNamesRequest struct {
 // GetInterestAndExchangeGroupNamesResponse contains all groups
 type GetInterestAndExchangeGroupNamesResponse struct {
 	Groups   []GroupInfo
+	Language Language
+}
+
+// GetInterestAndExchangeNamesRequest represents the parameters to get all series for a group
+type GetInterestAndExchangeNamesRequest struct {
+	GroupID  string
+	Language Language
+}
+
+// GetInterestAndExchangeNamesResponse contains all series for a group
+type GetInterestAndExchangeNamesResponse struct {
+	Series   []SeriesInfo
+	GroupID  string
 	Language Language
 }

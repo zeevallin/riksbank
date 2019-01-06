@@ -61,10 +61,10 @@ func (s *Swea) GetAllCrossNames(ctx context.Context, req *GetAllCrossNamesReques
 	}
 	res := &GetAllCrossNamesResponse{
 		Language: req.Language,
-		Series:   make([]SeriesInfo, len(env.Body.GetAllCrossNamesResponse.Return)),
+		Series:   make([]CrossSeriesInfo, len(env.Body.GetAllCrossNamesResponse.Return)),
 	}
 	for idx, r := range env.Body.GetAllCrossNamesResponse.Return {
-		res.Series[idx] = SeriesInfo{
+		res.Series[idx] = CrossSeriesInfo{
 			ID:          r.Seriesid.Text,
 			Name:        r.Seriesname.Text,
 			Description: r.Seriesdescription.Text,
@@ -207,6 +207,48 @@ func (s *Swea) GetInterestAndExchangeGroupNames(ctx context.Context, req *GetInt
 		Groups:   groups,
 	}
 	return res, nil
+}
+
+// GetInterestAndExchangeNames returns the series for the selected group
+func (s *Swea) GetInterestAndExchangeNames(ctx context.Context, req *GetInterestAndExchangeNamesRequest) (*GetInterestAndExchangeNamesResponse, error) {
+	body, err := build(tmpl("get_interest_and_exchange_names"), req)
+	if err != nil {
+		return nil, err
+	}
+	env := &responses.GetInterestAndExchangeNamesResponseEnvelope{}
+	err = s.call(ctx, body, env)
+	if err != nil {
+		return nil, err
+	}
+	series := make([]SeriesInfo, len(env.Body.GetInterestAndExchangeNamesResponse.Return))
+	for idx, s := range env.Body.GetInterestAndExchangeNamesResponse.Return {
+		series[idx] = SeriesInfo{
+			ID:      strings.TrimSpace(s.Seriesid.Text),
+			GroupID: strings.TrimSpace(s.Groupid.Text),
+
+			Name:            strings.TrimSpace(s.Shortdescription.Text),
+			Description:     strings.TrimSpace(s.Description.Text),
+			LongDescription: strings.TrimSpace(s.Longdescription.Text),
+			Source:          strings.TrimSpace(s.Source.Text),
+			Type:            strings.TrimSpace(s.Type.Text),
+			From:            parseDate(s.Datefrom.Text),
+			To:              parseDate(s.Dateto.Text),
+		}
+	}
+	res := &GetInterestAndExchangeNamesResponse{
+		GroupID:  req.GroupID,
+		Language: req.Language,
+		Series:   series,
+	}
+	return res, nil
+}
+
+func parseDate(s string) *civil.Date {
+	d, err := civil.ParseDate(strings.TrimSpace(s))
+	if err != nil {
+		return &civil.Date{}
+	}
+	return &d
 }
 
 func parseDatePeriod(d, p string) (civil.Date, string, error) {
