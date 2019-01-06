@@ -81,11 +81,7 @@ func (t *Tool) renderRates(req *riksbank.RatesRequest, res *riksbank.RatesRespon
 	if req.AggregateMethod != riksbank.Daily {
 		fmt.Fprintf(os.Stdout, "Aggregating %s %s value\n\n", req.AggregateMethod.Name(), req.AnalysisMethod)
 	}
-	var series = make([]string, len(req.Series))
-	for idx, s := range req.Series {
-		series[idx] = s
-	}
-	fmt.Fprintf(os.Stdout, "Series %s\n", strings.Join(series, ", "))
+	fmt.Fprintf(os.Stdout, "Series %s\n", strings.Join(req.Series, ", "))
 	fmt.Fprint(os.Stdout, "\n")
 	var valueLabel string
 	switch req.AnalysisMethod {
