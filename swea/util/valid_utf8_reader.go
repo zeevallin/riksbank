@@ -1,4 +1,4 @@
-package swea
+package util
 
 import (
 	"bufio"

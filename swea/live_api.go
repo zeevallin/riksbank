@@ -13,6 +13,7 @@ import (
 
 	"cloud.google.com/go/civil"
 	"github.com/zeeraw/riksbank/swea/responses"
+	"github.com/zeeraw/riksbank/swea/util"
 )
 
 const (
@@ -305,10 +306,8 @@ func (api *LiveAPI) call(ctx context.Context, body io.Reader, v interface{}) err
 	}
 	defer res.Body.Close()
 
-	utf8 := NewValidUTF8Reader(res.Body)
-
 	// Read the response
-	bts, err := ioutil.ReadAll(utf8)
+	bts, err := ioutil.ReadAll(util.NewValidUTF8Reader(res.Body))
 	if err != nil {
 		return err
 	}
