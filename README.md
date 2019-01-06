@@ -10,7 +10,7 @@ The command line tool can be used to perform most API calls and get the results 
 To install the command line tool, simply use go get.
 
 ```bash
-$ go get -u github.com/zeeraw/riksbank
+$ go get -u github.com/zeeraw/riksbank/cmd/riksbank
 ```
 
 ## Resources
