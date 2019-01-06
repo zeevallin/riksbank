@@ -1,9 +1,9 @@
-package util_test
+package xmlstrings_test
 
 import (
 	"testing"
 
-	"github.com/zeeraw/riksbank/swea/util"
+	"github.com/zeeraw/riksbank/swea/internal/xmlstrings"
 )
 
 func Test_ParseBool(t *testing.T) {
@@ -23,7 +23,7 @@ func Test_ParseBool(t *testing.T) {
 	}
 	for _, c := range cases {
 		t.Run(c.value, func(t *testing.T) {
-			actual := util.ParseBool(c.value)
+			actual := xmlstrings.ParseBool(c.value)
 			if actual != c.expected {
 				t.Errorf("expected %q to be %v, was %v", c.value, c.expected, actual)
 			}

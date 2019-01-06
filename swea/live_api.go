@@ -12,8 +12,9 @@ import (
 	"strings"
 
 	"cloud.google.com/go/civil"
+	"github.com/zeeraw/riksbank/swea/internal/validutf8"
+	"github.com/zeeraw/riksbank/swea/internal/xmlstrings"
 	"github.com/zeeraw/riksbank/swea/responses"
-	"github.com/zeeraw/riksbank/swea/util"
 )
 
 const (
@@ -88,7 +89,7 @@ func (api *LiveAPI) GetCalendarDays(ctx context.Context, req *GetCalendarDaysReq
 			Date:      date,
 			Week:      week,
 			WeekYear:  weekYear,
-			IsBankDay: util.ParseBool(strings.TrimSpace(r.Bankday.Text)),
+			IsBankDay: xmlstrings.ParseBool(strings.TrimSpace(r.Bankday.Text)),
 		}
 	}
 	return res, nil
@@ -307,7 +308,7 @@ func (api *LiveAPI) call(ctx context.Context, body io.Reader, v interface{}) err
 	defer res.Body.Close()
 
 	// Read the response
-	bts, err := ioutil.ReadAll(util.NewValidUTF8Reader(res.Body))
+	bts, err := ioutil.ReadAll(validutf8.NewReader(res.Body))
 	if err != nil {
 		return err
 	}
