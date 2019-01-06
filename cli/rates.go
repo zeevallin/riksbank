@@ -14,7 +14,7 @@ import (
 
 const (
 	ratesName  = "rates"
-	ratesUsage = "Lists currency or exchange rates between two dates"
+	ratesUsage = "Lists interest or exchange rates between two dates"
 )
 
 func (r *runner) cmdRates() cli.Command {
