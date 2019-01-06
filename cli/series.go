@@ -15,26 +15,26 @@ const (
 	seriesUsage = "Lists all interest and exchange series"
 )
 
-func (r *runner) cmdSeries() cli.Command {
+func (t *Tool) cmdSeries() cli.Command {
 	return cli.Command{
 		Name:   seriesName,
 		Usage:  seriesUsage,
-		Action: r.actionSeries,
+		Action: t.actionSeries,
 		Flags: []cli.Flag{
-			r.flagLang(),
-			r.flagGroup(),
+			t.flagLang(),
+			t.flagGroup(),
 		},
 	}
 }
 
-func (r *runner) actionSeries(c *cli.Context) error {
+func (t *Tool) actionSeries(c *cli.Context) error {
 	ctx := context.Background()
-	lang := swea.Language(r.lang)
+	lang := swea.Language(t.lang)
 
 	greq := &swea.GetInterestAndExchangeGroupNamesRequest{
 		Language: lang,
 	}
-	gres, err := r.api.GetInterestAndExchangeGroupNames(ctx, greq)
+	gres, err := t.API.GetInterestAndExchangeGroupNames(ctx, greq)
 	if err != nil {
 		return err
 	}
@@ -46,17 +46,17 @@ func (r *runner) actionSeries(c *cli.Context) error {
 				Language: lang,
 				GroupID:  g.ID,
 			}
-			res, err := r.api.GetInterestAndExchangeNames(ctx, req)
+			res, err := t.API.GetInterestAndExchangeNames(ctx, req)
 			if err != nil {
 				return err
 			}
-			r.renderSeries(g, res)
+			t.renderSeries(g, res)
 		}
 	}
 	return nil
 }
 
-func (r *runner) renderSeries(group swea.GroupInfo, res *swea.GetInterestAndExchangeNamesResponse) {
+func (t *Tool) renderSeries(group swea.GroupInfo, res *swea.GetInterestAndExchangeNamesResponse) {
 	const (
 		rowFmt = "%s\t %s\t %s\n"
 	)

@@ -15,31 +15,31 @@ const (
 	exchangeSeriesUsage = "Lists series for currency exchange rates to SEK"
 )
 
-func (r *runner) cmdExchangeSeries() cli.Command {
+func (t *Tool) cmdExchangeSeries() cli.Command {
 	return cli.Command{
 		Name:   exchangeSeriesName,
 		Usage:  exchangeSeriesUsage,
-		Action: r.actionExchangeSeries,
+		Action: t.actionExchangeSeries,
 		Flags: []cli.Flag{
-			r.flagLang(),
+			t.flagLang(),
 		},
 	}
 }
 
-func (r *runner) actionExchangeSeries(c *cli.Context) error {
+func (t *Tool) actionExchangeSeries(c *cli.Context) error {
 	ctx := context.Background()
 	req := &swea.GetAllCrossNamesRequest{
-		Language: swea.Language(r.lang),
+		Language: swea.Language(t.lang),
 	}
-	res, err := r.api.GetAllCrossNames(ctx, req)
+	res, err := t.API.GetAllCrossNames(ctx, req)
 	if err != nil {
 		return err
 	}
-	r.renderExchangeSeries(res)
+	t.renderExchangeSeries(res)
 	return nil
 }
 
-func (r *runner) renderExchangeSeries(res *swea.GetAllCrossNamesResponse) {
+func (t *Tool) renderExchangeSeries(res *swea.GetAllCrossNamesResponse) {
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
 	defer w.Flush()
 	fmt.Fprintf(w, "ID\t Name\t Description\n")

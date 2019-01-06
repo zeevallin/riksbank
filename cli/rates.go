@@ -17,23 +17,23 @@ const (
 	ratesUsage = "Lists interest or exchange rates between two dates"
 )
 
-func (r *runner) cmdRates() cli.Command {
+func (t *Tool) cmdRates() cli.Command {
 	return cli.Command{
 		Name:   ratesName,
 		Usage:  ratesUsage,
-		Action: r.actionRates,
+		Action: t.actionRates,
 		Flags: []cli.Flag{
-			r.flagFrom(),
-			r.flagTo(),
-			r.flagLang(),
-			r.flagAggregate(),
-			r.flagAnalysis(),
-			r.flagSeries(),
+			t.flagFrom(),
+			t.flagTo(),
+			t.flagLang(),
+			t.flagAggregate(),
+			t.flagAnalysis(),
+			t.flagSeries(),
 		},
 	}
 }
 
-func (r *runner) actionRates(c *cli.Context) error {
+func (t *Tool) actionRates(c *cli.Context) error {
 	ctx := context.Background()
 	ss := c.StringSlice("series")
 	if len(ss) < 1 {
@@ -65,7 +65,7 @@ func (r *runner) actionRates(c *cli.Context) error {
 	req := &swea.GetInterestAndExchangeRatesRequest{
 		From:            from,
 		To:              to,
-		Language:        swea.Language(r.lang),
+		Language:        swea.Language(t.lang),
 		AggregateMethod: aggregate,
 		Series:          series,
 	}
@@ -80,15 +80,15 @@ func (r *runner) actionRates(c *cli.Context) error {
 		req.Ultimo = true
 	}
 
-	res, err := r.api.GetInterestAndExchangeRates(ctx, req)
+	res, err := t.API.GetInterestAndExchangeRates(ctx, req)
 	if err != nil {
 		return err
 	}
 
-	return r.renderRates(analysis, res)
+	return t.renderRates(analysis, res)
 }
 
-func (r *runner) renderRates(analysis swea.AnalysisMethod, res *swea.GetInterestAndExchangeRatesResponse) error {
+func (t *Tool) renderRates(analysis swea.AnalysisMethod, res *swea.GetInterestAndExchangeRatesResponse) error {
 	const (
 		rowFmt = "%s\t %s\t %s\t %s\n"
 	)

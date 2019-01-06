@@ -8,7 +8,8 @@ import (
 )
 
 func main() {
-	err := cli.Run(os.Args)
+	tool := cli.New()
+	err := tool.Run(os.Args)
 	if err != nil {
 		log.Fatal(err)
 	}

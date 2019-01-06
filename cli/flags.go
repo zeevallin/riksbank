@@ -4,65 +4,65 @@ import (
 	"github.com/urfave/cli"
 )
 
-func (r *runner) flagFrom() *cli.StringFlag {
+func (t *Tool) flagFrom() *cli.StringFlag {
 	return &cli.StringFlag{
 		Name:        "from",
 		Usage:       "date where the series start",
 		Value:       defaultFrom,
-		Destination: &r.from,
+		Destination: &t.from,
 	}
 }
 
-func (r *runner) flagTo() *cli.StringFlag {
+func (t *Tool) flagTo() *cli.StringFlag {
 	return &cli.StringFlag{
 		Name:        "to",
 		Usage:       "date where the series end",
 		Value:       defaultTo,
-		Destination: &r.to,
+		Destination: &t.to,
 	}
 }
 
-func (r *runner) flagLang() *cli.StringFlag {
+func (t *Tool) flagLang() *cli.StringFlag {
 	return &cli.StringFlag{
 		Name:        "lang",
 		Usage:       "en or sv",
-		Destination: &r.lang,
+		Destination: &t.lang,
 		Value:       "en",
 	}
 }
 
-func (r *runner) flagAggregate() *cli.StringFlag {
+func (t *Tool) flagAggregate() *cli.StringFlag {
 	return &cli.StringFlag{
 		Name:        "aggregate",
 		Usage:       "daily, weekly, monthly, quartery or yearly",
-		Destination: &r.aggregate,
+		Destination: &t.aggregate,
 		Value:       "daily",
 	}
 }
 
-func (r *runner) flagAnalysis() *cli.StringFlag {
+func (t *Tool) flagAnalysis() *cli.StringFlag {
 	return &cli.StringFlag{
 		Name:        "analysis",
 		Usage:       "real, mean, min, max or ultimo",
-		Destination: &r.method,
+		Destination: &t.method,
 		Value:       "real",
 	}
 }
 
-func (r *runner) flagCurrency() *cli.StringSliceFlag {
+func (t *Tool) flagCurrency() *cli.StringSliceFlag {
 	return &cli.StringSliceFlag{
 		Name:  "currency, c",
 		Usage: "eg. GBP",
 	}
 }
 
-func (r *runner) flagSeries() *cli.StringSliceFlag {
+func (t *Tool) flagSeries() *cli.StringSliceFlag {
 	return &cli.StringSliceFlag{
 		Name:  "series, s",
 		Usage: "series id (eg. SETB1MBENCHC)",
 	}
 }
-func (r *runner) flagGroup() *cli.StringSliceFlag {
+func (t *Tool) flagGroup() *cli.StringSliceFlag {
 	return &cli.StringSliceFlag{
 		Name:  "group, g",
 		Usage: "group id (eg. 1), if none provided all groups will be shown",

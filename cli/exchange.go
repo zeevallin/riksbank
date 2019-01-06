@@ -7,13 +7,13 @@ const (
 	exchangeUsage = "Shows a list of commands for currency exchange"
 )
 
-func (r *runner) cmdExchange() cli.Command {
+func (t *Tool) cmdExchange() cli.Command {
 	return cli.Command{
 		Name:  exchangeName,
 		Usage: exchangeUsage,
 		Subcommands: []cli.Command{
-			r.cmdExchangeSeries(),
-			r.cmdExchangeRates(),
+			t.cmdExchangeSeries(),
+			t.cmdExchangeRates(),
 		},
 	}
 }

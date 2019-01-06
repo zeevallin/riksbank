@@ -15,32 +15,32 @@ const (
 	groupsUsage = "Lists all interest and exchange groups"
 )
 
-func (r *runner) cmdGroups() cli.Command {
+func (t *Tool) cmdGroups() cli.Command {
 	return cli.Command{
 		Name:   groupsName,
 		Usage:  groupsUsage,
-		Action: r.actionGroups,
+		Action: t.actionGroups,
 		Flags: []cli.Flag{
-			r.flagLang(),
+			t.flagLang(),
 		},
 	}
 }
 
-func (r *runner) actionGroups(c *cli.Context) error {
+func (t *Tool) actionGroups(c *cli.Context) error {
 	ctx := context.Background()
 	req := &swea.GetInterestAndExchangeGroupNamesRequest{
-		Language: swea.Language(r.lang),
+		Language: swea.Language(t.lang),
 	}
 
-	res, err := r.api.GetInterestAndExchangeGroupNames(ctx, req)
+	res, err := t.API.GetInterestAndExchangeGroupNames(ctx, req)
 	if err != nil {
 		return err
 	}
 
-	return r.renderGroups(res)
+	return t.renderGroups(res)
 }
 
-func (r *runner) renderGroups(res *swea.GetInterestAndExchangeGroupNamesResponse) error {
+func (t *Tool) renderGroups(res *swea.GetInterestAndExchangeGroupNamesResponse) error {
 	const (
 		rowFmt = "%s\t %s\n"
 	)

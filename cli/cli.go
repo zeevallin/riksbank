@@ -8,8 +8,9 @@ import (
 	"github.com/zeeraw/riksbank/swea"
 )
 
-type runner struct {
-	api swea.Swea
+// Tool represents the command line tool for riksbank
+type Tool struct {
+	API swea.Swea
 
 	lang      string
 	from      string
@@ -31,11 +32,15 @@ func init() {
 	defaultFrom = today.AddDays(-7).String()
 }
 
-// Run will run the command line tool
-func Run(args []string) error {
-	r := &runner{
-		api: swea.New(swea.Config{}),
+// New returns a new Tool with the live API
+func New() *Tool {
+	return &Tool{
+		API: swea.New(swea.Config{}),
 	}
+}
+
+// Run will run the command line tool
+func (t *Tool) Run(args []string) error {
 	app := cli.NewApp()
 	app.Name = "riksbank"
 	app.Usage = ""
@@ -46,11 +51,11 @@ func Run(args []string) error {
 	app.Author = "Philip Vieira"
 	app.Email = "zee@vall.in"
 	app.Commands = []cli.Command{
-		r.cmdRates(),
-		r.cmdDays(),
-		r.cmdSeries(),
-		r.cmdGroups(),
-		r.cmdExchange(),
+		t.cmdRates(),
+		t.cmdDays(),
+		t.cmdSeries(),
+		t.cmdGroups(),
+		t.cmdExchange(),
 	}
 	app.Before = func(c *cli.Context) error {
 		return nil

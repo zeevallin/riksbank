@@ -16,40 +16,40 @@ const (
 	daysUsage = "Lists days with relevant banking information between two dates"
 )
 
-func (r *runner) cmdDays() cli.Command {
+func (t *Tool) cmdDays() cli.Command {
 	return cli.Command{
 		Name:   daysName,
 		Usage:  daysUsage,
-		Action: r.actionDays,
+		Action: t.actionDays,
 		Flags: []cli.Flag{
-			r.flagFrom(),
-			r.flagTo(),
+			t.flagFrom(),
+			t.flagTo(),
 		},
 	}
 }
 
-func (r *runner) actionDays(c *cli.Context) error {
+func (t *Tool) actionDays(c *cli.Context) error {
 	ctx := context.Background()
-	from, err := civil.ParseDate(r.from)
+	from, err := civil.ParseDate(t.from)
 	if err != nil {
 		return err
 	}
-	to, err := civil.ParseDate(r.to)
+	to, err := civil.ParseDate(t.to)
 	if err != nil {
 		return err
 	}
-	res, err := r.api.GetCalendarDays(ctx, &swea.GetCalendarDaysRequest{
+	res, err := t.API.GetCalendarDays(ctx, &swea.GetCalendarDaysRequest{
 		From: from,
 		To:   to,
 	})
 	if err != nil {
 		return nil
 	}
-	r.renderDays(res)
+	t.renderDays(res)
 	return nil
 }
 
-func (r *runner) renderDays(res *swea.GetCalendarDaysResponse) {
+func (t *Tool) renderDays(res *swea.GetCalendarDaysResponse) {
 	fmt.Fprintf(os.Stdout, "Showing days between %s and %s\n\n", res.From.String(), res.To.String())
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
 	fmt.Fprintf(w, "Date\t Year\t Week\t Bank day\n")

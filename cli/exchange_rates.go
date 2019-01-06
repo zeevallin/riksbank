@@ -18,22 +18,22 @@ const (
 	exchangeRatesUsage = "Lists the exchange rates between two dates"
 )
 
-func (r *runner) cmdExchangeRates() cli.Command {
+func (t *Tool) cmdExchangeRates() cli.Command {
 	return cli.Command{
 		Name:   exchangeRatesName,
 		Usage:  exchangeRatesUsage,
-		Action: r.actionExchangeRates,
+		Action: t.actionExchangeRates,
 		Flags: []cli.Flag{
-			r.flagFrom(),
-			r.flagTo(),
-			r.flagLang(),
-			r.flagAggregate(),
-			r.flagCurrency(),
+			t.flagFrom(),
+			t.flagTo(),
+			t.flagLang(),
+			t.flagAggregate(),
+			t.flagCurrency(),
 		},
 	}
 }
 
-func (r *runner) actionExchangeRates(c *cli.Context) error {
+func (t *Tool) actionExchangeRates(c *cli.Context) error {
 	ctx := context.Background()
 	cs := c.StringSlice("currency")
 	if len(cs) <= 0 {
@@ -43,15 +43,15 @@ func (r *runner) actionExchangeRates(c *cli.Context) error {
 	for idx, c := range cs {
 		pairs[idx] = swea.ParseCurrencyPair(c).ToCrossPair()
 	}
-	from, err := civil.ParseDate(r.from)
+	from, err := civil.ParseDate(t.from)
 	if err != nil {
 		return err
 	}
-	to, err := civil.ParseDate(r.to)
+	to, err := civil.ParseDate(t.to)
 	if err != nil {
 		return err
 	}
-	method, err := swea.ParseAggregate(r.aggregate)
+	method, err := swea.ParseAggregate(t.aggregate)
 	if err != nil {
 		return err
 	}
@@ -59,20 +59,20 @@ func (r *runner) actionExchangeRates(c *cli.Context) error {
 		CrossPairs:      pairs,
 		From:            from,
 		To:              to,
-		Language:        swea.Language(r.lang),
+		Language:        swea.Language(t.lang),
 		AggregateMethod: method,
 	}
-	res, err := r.api.GetCrossRates(ctx, req)
+	res, err := t.API.GetCrossRates(ctx, req)
 	if err != nil {
 		return err
 	}
 
-	r.renderExchangeRates(res)
+	t.renderExchangeRates(res)
 
 	return nil
 }
 
-func (r *runner) renderExchangeRates(res *swea.GetCrossRatesResponse) {
+func (t *Tool) renderExchangeRates(res *swea.GetCrossRatesResponse) {
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
 	defer w.Flush()
 	fmt.Fprintf(os.Stdout, "Ranging from %s to %s\n", res.From.String(), res.To.String())
