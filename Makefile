@@ -1,8 +1,11 @@
 prepare:
 
 install: prepare
-	@go get -u github.com/gobuffalo/packr/packr
-	@dep ensure -v -update
+	@go get -u \
+		github.com/gobuffalo/packr/packr \
+		github.com/urfave/cli \
+		github.com/davecgh/go-spew/spew \
+		cloud.google.com/go/civil
 	
 build: gen
 	@go build -o build/riksbank cmd/riksbank/*.go
