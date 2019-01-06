@@ -6,7 +6,6 @@ import (
 	"os"
 	"text/tabwriter"
 
-	"cloud.google.com/go/civil"
 	"github.com/urfave/cli"
 	"github.com/zeeraw/riksbank/swea"
 )
@@ -30,11 +29,11 @@ func (t *Tool) cmdDays() cli.Command {
 
 func (t *Tool) actionDays(c *cli.Context) error {
 	ctx := context.Background()
-	from, err := civil.ParseDate(c.String("from"))
+	from, err := parseDate(c.String("from"))
 	if err != nil {
 		return err
 	}
-	to, err := civil.ParseDate(c.String("to"))
+	to, err := parseDate(c.String("to"))
 	if err != nil {
 		return err
 	}

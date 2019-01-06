@@ -7,8 +7,6 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"cloud.google.com/go/civil"
-
 	"github.com/urfave/cli"
 	"github.com/zeeraw/riksbank/swea"
 )
@@ -43,11 +41,11 @@ func (t *Tool) actionExchangeRates(c *cli.Context) error {
 	for idx, c := range cs {
 		pairs[idx] = swea.ParseCurrencyPair(c).ToCrossPair()
 	}
-	from, err := civil.ParseDate(c.String("from"))
+	from, err := parseDate(c.String("from"))
 	if err != nil {
 		return err
 	}
-	to, err := civil.ParseDate(c.String("to"))
+	to, err := parseDate(c.String("to"))
 	if err != nil {
 		return err
 	}

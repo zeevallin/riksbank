@@ -11,7 +11,6 @@ import (
 	"strconv"
 	"strings"
 
-	"cloud.google.com/go/civil"
 	"github.com/zeeraw/riksbank/swea/internal/validutf8"
 	"github.com/zeeraw/riksbank/swea/internal/xmlstrings"
 	"github.com/zeeraw/riksbank/swea/responses"
@@ -73,10 +72,7 @@ func (api *LiveAPI) GetCalendarDays(ctx context.Context, req *GetCalendarDaysReq
 		Days: make([]DayInfo, len(env.Body.GetCalendarDaysResponse.Return)),
 	}
 	for idx, r := range env.Body.GetCalendarDaysResponse.Return {
-		date, err := civil.ParseDate(r.Caldate.Text)
-		if err != nil {
-			return nil, err
-		}
+		date := xmlstrings.ParseDate(strings.TrimSpace(r.Caldate.Text))
 		week, err := strconv.Atoi(r.Week.Text)
 		if err != nil {
 			return nil, err
@@ -142,10 +138,7 @@ func (api *LiveAPI) GetCrossRates(ctx context.Context, req *GetCrossRatesRequest
 	var crossRates = []CrossRate{}
 	for _, s := range env.Body.GetCrossRatesResponse.Return.Groups.Series {
 		for _, rr := range s.Resultrows {
-			date, err := civil.ParseDate(strings.TrimSpace(rr.Date))
-			if err != nil {
-				return nil, err
-			}
+			date := xmlstrings.ParseDate(strings.TrimSpace(rr.Date))
 			var period string
 			ptx := strings.TrimSpace(rr.Period.Text)
 			if ptx != "" {
@@ -204,10 +197,7 @@ func (api *LiveAPI) GetInterestAndExchangeRates(ctx context.Context, req *GetInt
 			seriesID := strings.TrimSpace(ss.Seriesid.Text)
 			seriesName := strings.TrimSpace(ss.Seriesname.Text)
 			for _, rr := range ss.Resultrows {
-				date, period, err := parseDatePeriod(rr.Date.Text, rr.Period.Text)
-				if err != nil {
-					return nil, err
-				}
+				date, period := xmlstrings.ParseDatePeriod(strings.TrimSpace(rr.Date.Text), strings.TrimSpace(rr.Period.Text))
 				ri := RateInfo{
 					GroupID:    groupID,
 					GroupName:  groupName,
@@ -279,8 +269,8 @@ func (api *LiveAPI) GetInterestAndExchangeNames(ctx context.Context, req *GetInt
 			LongDescription: strings.TrimSpace(s.Longdescription.Text),
 			Source:          strings.TrimSpace(s.Source.Text),
 			Type:            strings.TrimSpace(s.Type.Text),
-			From:            parseDate(s.Datefrom.Text),
-			To:              parseDate(s.Dateto.Text),
+			From:            xmlstrings.ParseDate(strings.TrimSpace(s.Datefrom.Text)),
+			To:              xmlstrings.ParseDate(strings.TrimSpace(s.Dateto.Text)),
 		}
 	}
 	res := &GetInterestAndExchangeNamesResponse{

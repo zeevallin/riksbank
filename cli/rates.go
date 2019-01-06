@@ -7,7 +7,6 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"cloud.google.com/go/civil"
 	"github.com/urfave/cli"
 	"github.com/zeeraw/riksbank/swea"
 )
@@ -46,11 +45,11 @@ func (t *Tool) actionRates(c *cli.Context) error {
 			GroupID:  "1", // Set this to 1 until we're able to fetch series and groups
 		}
 	}
-	from, err := civil.ParseDate(c.String("from"))
+	from, err := parseDate(c.String("from"))
 	if err != nil {
 		return err
 	}
-	to, err := civil.ParseDate(c.String("to"))
+	to, err := parseDate(c.String("to"))
 	if err != nil {
 		return err
 	}

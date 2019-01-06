@@ -2,8 +2,7 @@ package swea
 
 import (
 	"strconv"
-
-	"cloud.google.com/go/civil"
+	"time"
 )
 
 // Language is the container for a language ID
@@ -35,7 +34,7 @@ type SearchGroupSeries struct {
 type CrossRate struct {
 	Base    Currency
 	Counter Currency
-	Date    civil.Date
+	Date    time.Time
 	Period  string
 	Value   string
 }
@@ -56,7 +55,7 @@ func (cp CrossPair) ToCurrencyPair() CurrencyPair {
 
 // DayInfo represents a date in the context of the central bank
 type DayInfo struct {
-	Date      civil.Date
+	Date      time.Time
 	Week      int
 	WeekYear  int
 	IsBankDay bool
@@ -78,8 +77,8 @@ type SeriesInfo struct {
 	LongDescription string
 	Source          string
 	Type            string
-	From            *civil.Date
-	To              *civil.Date
+	From            time.Time
+	To              time.Time
 }
 
 // RateInfo represents information about a rate for a series in a period
@@ -90,7 +89,7 @@ type RateInfo struct {
 	SeriesID   string
 	SeriesName string
 
-	Date   civil.Date
+	Date   time.Time
 	Period string
 
 	Average string
@@ -128,14 +127,14 @@ func (gis GroupsInfo) Less(i, j int) bool {
 
 // GetCalendarDaysRequest represents the parameters to get all business days between two dates
 type GetCalendarDaysRequest struct {
-	From civil.Date
-	To   civil.Date
+	From time.Time
+	To   time.Time
 }
 
 // GetCalendarDaysResponse contains the
 type GetCalendarDaysResponse struct {
-	From civil.Date
-	To   civil.Date
+	From time.Time
+	To   time.Time
 	Days []DayInfo
 }
 
@@ -154,8 +153,8 @@ type GetAllCrossNamesResponse struct {
 type GetCrossRatesRequest struct {
 	CrossPairs []CrossPair
 
-	From            civil.Date
-	To              civil.Date
+	From            time.Time
+	To              time.Time
 	Language        Language
 	AggregateMethod AggregateMethod
 }
@@ -165,8 +164,8 @@ type GetCrossRatesResponse struct {
 	CrossRates []CrossRate
 	CrossPairs []CrossPair
 
-	From            civil.Date
-	To              civil.Date
+	From            time.Time
+	To              time.Time
 	Language        Language
 	AggregateMethod AggregateMethod
 }
@@ -175,8 +174,8 @@ type GetCrossRatesResponse struct {
 type GetInterestAndExchangeRatesRequest struct {
 	Series []SearchGroupSeries
 
-	From            civil.Date
-	To              civil.Date
+	From            time.Time
+	To              time.Time
 	Language        Language
 	AggregateMethod AggregateMethod
 
@@ -192,8 +191,8 @@ type GetInterestAndExchangeRatesResponse struct {
 
 	Series []SearchGroupSeries
 
-	From            civil.Date
-	To              civil.Date
+	From            time.Time
+	To              time.Time
 	Language        Language
 	AggregateMethod AggregateMethod
 

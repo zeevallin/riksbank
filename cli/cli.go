@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"time"
 
-	"cloud.google.com/go/civil"
 	"github.com/urfave/cli"
 	"github.com/zeeraw/riksbank/swea"
 )
@@ -20,11 +19,11 @@ var (
 )
 
 func init() {
-	today := civil.DateOf(time.Now())
+	today := time.Now()
 	// Default to should be today
-	defaultTo = today.String()
+	defaultTo = today.Format(dateLayout)
 	// Default from should be seven days ago
-	defaultFrom = today.AddDays(-7).String()
+	defaultFrom = today.AddDate(0, 0, -7).Format(dateLayout)
 }
 
 // New returns a new Tool with the live API

@@ -3,8 +3,8 @@ package requests
 import (
 	"fmt"
 	"html/template"
+	"time"
 
-	"cloud.google.com/go/civil"
 	"github.com/gobuffalo/packr"
 )
 
@@ -19,8 +19,8 @@ var FuncMap = template.FuncMap{
 	"fmtBool": fmtBool,
 }
 
-func fmtDate(d civil.Date) string {
-	return fmt.Sprintf("%04d-%02d-%02d", d.Year, d.Month, d.Day)
+func fmtDate(t time.Time) string {
+	return fmt.Sprintf("%04d-%02d-%02d", t.Year(), t.Month(), t.Day())
 }
 
 func fmtBool(b bool) string {
