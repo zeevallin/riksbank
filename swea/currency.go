@@ -38,7 +38,7 @@ type CurrencyPair struct {
 
 // ParseCurrencyPair will attempt to turn a string into a currency pair
 func ParseCurrencyPair(s string) CurrencyPair {
-	re := regexp.MustCompile("[/\\-:]")
+	re := regexp.MustCompile(`[/-:]`)
 	split := re.Split(s, -1)
 	if len(split) > 1 {
 		return CurrencyPair{
