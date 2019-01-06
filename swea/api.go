@@ -29,6 +29,9 @@ var (
 		Host:   host,
 		Path:   path,
 	}
+
+	// DefaultClient is the default Swea client
+	DefaultClient = New(Config{})
 )
 
 // Config represents the configuration for the Riksbank API client

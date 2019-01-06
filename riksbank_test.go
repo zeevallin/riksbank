@@ -61,7 +61,7 @@ var (
 func TestMain(m *testing.M) {
 	mck = mock.New()
 	api = riksbank.New(riksbank.Config{
-		SweaClient: mck,
+		Client: mck,
 	})
 	os.Exit(m.Run())
 }

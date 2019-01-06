@@ -21,7 +21,7 @@ func TestMain(m *testing.M) {
 	mck := mock.New()
 	tool = cli.Tool{
 		Riksbank: riksbank.New(riksbank.Config{
-			SweaClient: mck,
+			Client: mck,
 		}),
 	}
 	os.Exit(m.Run())

@@ -4,8 +4,8 @@ import (
 	"context"
 )
 
-// Swea represents the available methods in the Swea API
-type Swea interface {
+// Client represents the available methods in the Swea API
+type Client interface {
 	GetCalendarDays(ctx context.Context, req *GetCalendarDaysRequest) (*GetCalendarDaysResponse, error)
 	GetAllCrossNames(ctx context.Context, req *GetAllCrossNamesRequest) (*GetAllCrossNamesResponse, error)
 	GetCrossRates(ctx context.Context, req *GetCrossRatesRequest) (*GetCrossRatesResponse, error)

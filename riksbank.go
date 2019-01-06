@@ -12,22 +12,22 @@ import (
 
 // Config represents riksbank API configuration
 type Config struct {
-	SweaClient swea.Swea
+	Client swea.Client
 }
 
 // Riksbank represents the API client
 type Riksbank struct {
-	Swea swea.Swea
+	Client swea.Client
 }
 
 // New starts a new instance of riksbank
 func New(config Config) *Riksbank {
-	sweaClient := config.SweaClient
-	if sweaClient == nil {
-		sweaClient = swea.New(swea.Config{})
+	client := config.Client
+	if client == nil {
+		client = swea.DefaultClient
 	}
 	return &Riksbank{
-		Swea: sweaClient,
+		Client: client,
 	}
 }
 
@@ -74,7 +74,7 @@ func (rb *Riksbank) Rates(ctx context.Context, req *RatesRequest) (*RatesRespons
 	case Ultimo:
 		sweaReq.Ultimo = true
 	}
-	sweaRes, err := rb.Swea.GetInterestAndExchangeRates(ctx, sweaReq)
+	sweaRes, err := rb.Client.GetInterestAndExchangeRates(ctx, sweaReq)
 	if err != nil {
 		return nil, err
 	}
@@ -142,7 +142,7 @@ func (rb *Riksbank) ExchangeRates(ctx context.Context, req *ExchangeRatesRequest
 		To:              req.To,
 		Language:        swea.English,
 	}
-	sweaRes, err := rb.Swea.GetCrossRates(ctx, sweaReq)
+	sweaRes, err := rb.Client.GetCrossRates(ctx, sweaReq)
 	if err != nil {
 		return nil, err
 	}
@@ -182,7 +182,7 @@ func (rb *Riksbank) ExchangeCurrencies(ctx context.Context, req *ExchangeCurrenc
 	sweaReq := &swea.GetAllCrossNamesRequest{
 		Language: swea.English,
 	}
-	sweaRes, err := rb.Swea.GetAllCrossNames(ctx, sweaReq)
+	sweaRes, err := rb.Client.GetAllCrossNames(ctx, sweaReq)
 	if err != nil {
 		return nil, err
 	}
@@ -217,7 +217,7 @@ func (rb *Riksbank) Days(ctx context.Context, req *DaysRequest) (*DaysResponse, 
 		From: req.From,
 		To:   req.To,
 	}
-	sweaRes, err := rb.Swea.GetCalendarDays(ctx, sweaReq)
+	sweaRes, err := rb.Client.GetCalendarDays(ctx, sweaReq)
 	if err != nil {
 		return nil, err
 	}
@@ -246,7 +246,7 @@ type GroupsResponse struct {
 
 // Groups returns a list of all interest and exchange rate series groups
 func (rb *Riksbank) Groups(ctx context.Context, req *GroupsRequest) (*GroupsResponse, error) {
-	sweaRes, err := rb.Swea.GetInterestAndExchangeGroupNames(ctx, &swea.GetInterestAndExchangeGroupNamesRequest{
+	sweaRes, err := rb.Client.GetInterestAndExchangeGroupNames(ctx, &swea.GetInterestAndExchangeGroupNamesRequest{
 		Language: swea.English,
 	})
 	if err != nil {
@@ -274,7 +274,7 @@ type SeriesResponse struct {
 
 // Series returns a list of series grouped by their group
 func (rb *Riksbank) Series(ctx context.Context, req *SeriesRequest) (*SeriesResponse, error) {
-	sweaGRes, err := rb.Swea.GetInterestAndExchangeGroupNames(ctx, &swea.GetInterestAndExchangeGroupNamesRequest{
+	sweaGRes, err := rb.Client.GetInterestAndExchangeGroupNames(ctx, &swea.GetInterestAndExchangeGroupNamesRequest{
 		Language: swea.English,
 	})
 	if err != nil {
@@ -287,7 +287,7 @@ func (rb *Riksbank) Series(ctx context.Context, req *SeriesRequest) (*SeriesResp
 				Language: swea.English,
 				GroupID:  g.ID,
 			}
-			sweaENRes, err := rb.Swea.GetInterestAndExchangeNames(ctx, sweaENReq)
+			sweaENRes, err := rb.Client.GetInterestAndExchangeNames(ctx, sweaENReq)
 			if err != nil {
 				return nil, err
 			}
