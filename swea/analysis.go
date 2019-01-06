@@ -82,22 +82,22 @@ var (
 	}
 )
 
-// ErrUnknownAnalysisForAggregate happens when the analysis method cannot be used for the aggregate method
-type ErrUnknownAnalysisForAggregate struct {
+// UnknownAnalysisForAggregateError happens when the analysis method cannot be used for the aggregate method
+type UnknownAnalysisForAggregateError struct {
 	anm AnalysisMethod
 	agm AggregateMethod
 }
 
-func (e ErrUnknownAnalysisForAggregate) Error() string {
+func (e UnknownAnalysisForAggregateError) Error() string {
 	return fmt.Sprintf("%s aggregate does not support analysis method: %v", AggregateName(e.agm), e.anm)
 }
 
-// ErrUnknownAnalysis happens when the analysis method does not exist at all
-type ErrUnknownAnalysis struct {
+// UnknownAnalysisError happens when the analysis method does not exist at all
+type UnknownAnalysisError struct {
 	s string
 }
 
-func (e ErrUnknownAnalysis) Error() string {
+func (e UnknownAnalysisError) Error() string {
 	return fmt.Sprintf("analysis method does not exist: %s", e.s)
 }
 
@@ -105,9 +105,9 @@ func (e ErrUnknownAnalysis) Error() string {
 func ParseAnalysisForAggregate(s string, aggregate AggregateMethod) (AnalysisMethod, error) {
 	analysis, ok := AnalysisMethods[strings.ToLower(s)]
 	if !ok {
-		return AnalysisMethod(0), ErrUnknownAnalysis{s}
+		return AnalysisMethod(0), UnknownAnalysisError{s}
 	}
-	err := ErrUnknownAnalysisForAggregate{analysis, aggregate}
+	err := UnknownAnalysisForAggregateError{analysis, aggregate}
 	switch aggregate {
 	case Daily:
 		if _, ok := DailyAnalysis[analysis]; !ok {
