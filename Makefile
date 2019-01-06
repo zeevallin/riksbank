@@ -1,7 +1,7 @@
 prepare:
 
 install: prepare
-	@go get -u \
+	@go get -t -v -u \
 		github.com/gobuffalo/packr/packr \
 		github.com/urfave/cli \
 		github.com/davecgh/go-spew/spew \
