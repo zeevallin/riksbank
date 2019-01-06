@@ -8,7 +8,7 @@ import (
 	"text/tabwriter"
 
 	"github.com/urfave/cli"
-	"github.com/zeeraw/riksbank/swea"
+	"github.com/zeeraw/riksbank"
 )
 
 const (
@@ -34,16 +34,9 @@ func (t *Tool) cmdRates() cli.Command {
 
 func (t *Tool) actionRates(c *cli.Context) error {
 	ctx := context.Background()
-	ss := c.StringSlice("series")
-	if len(ss) < 1 {
+	series := c.StringSlice("series")
+	if len(series) < 1 {
 		return fmt.Errorf("need to have at least one series")
-	}
-	series := make([]swea.SearchGroupSeries, len(ss))
-	for idx, s := range ss {
-		series[idx] = swea.SearchGroupSeries{
-			SeriesID: s,
-			GroupID:  "1", // Set this to 1 until we're able to fetch series and groups
-		}
 	}
 	from, err := parseDate(c.String("from"))
 	if err != nil {
@@ -53,86 +46,63 @@ func (t *Tool) actionRates(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	aggregate, err := swea.ParseAggregate(c.String("aggregate"))
+	aggregate, err := riksbank.ParseAggregate(c.String("aggregate"))
 	if err != nil {
 		return err
 	}
-	analysis, err := swea.ParseAnalysisForAggregate(c.String("analysis"), aggregate)
+	analysis, err := riksbank.ParseAggregateAnalysis(aggregate, c.String("analysis"))
 	if err != nil {
 		return err
 	}
-	req := &swea.GetInterestAndExchangeRatesRequest{
+
+	req := &riksbank.RatesRequest{
+		Series:          series,
 		From:            from,
 		To:              to,
-		Language:        swea.Language(c.String("lang")),
 		AggregateMethod: aggregate,
-		Series:          series,
-	}
-	switch analysis {
-	case swea.Mean:
-		req.Average = true
-	case swea.Min:
-		req.Min = true
-	case swea.Max:
-		req.Max = true
-	case swea.Ultimo:
-		req.Ultimo = true
+		AnalysisMethod:  analysis,
 	}
 
-	res, err := t.API.GetInterestAndExchangeRates(ctx, req)
+	res, err := t.Riksbank.Rates(ctx, req)
 	if err != nil {
 		return err
 	}
 
-	return t.renderRates(analysis, res)
+	return t.renderRates(req, res)
 }
 
-func (t *Tool) renderRates(analysis swea.AnalysisMethod, res *swea.GetInterestAndExchangeRatesResponse) error {
+func (t *Tool) renderRates(req *riksbank.RatesRequest, res *riksbank.RatesResponse) error {
 	const (
 		rowFmt = "%s\t %s\t %s\t %s\n"
 	)
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
 	defer w.Flush()
-	fmt.Fprintf(os.Stdout, "Ranging from %s to %s\n", formatDate(res.From), formatDate(res.To))
-	if res.AggregateMethod != swea.Daily {
-		fmt.Fprintf(os.Stdout, "Aggregating %s %s value\n\n", swea.AggregateName(res.AggregateMethod), analysis)
+	fmt.Fprintf(os.Stdout, "Ranging from %s to %s\n", formatDate(req.From), formatDate(req.To))
+	if req.AggregateMethod != riksbank.Daily {
+		fmt.Fprintf(os.Stdout, "Aggregating %s %s value\n\n", req.AggregateMethod.Name(), req.AnalysisMethod)
 	}
-	var series = make([]string, len(res.Series))
-	for idx, s := range res.Series {
-		series[idx] = s.SeriesID
+	var series = make([]string, len(req.Series))
+	for idx, s := range req.Series {
+		series[idx] = s
 	}
 	fmt.Fprintf(os.Stdout, "Series %s\n", strings.Join(series, ", "))
 	fmt.Fprint(os.Stdout, "\n")
-
 	var valueLabel string
-	switch analysis {
-	case swea.Mean:
+	switch req.AnalysisMethod {
+	case riksbank.Mean:
 		valueLabel = "Mean value"
-	case swea.Min:
+	case riksbank.Min:
 		valueLabel = "Min value"
-	case swea.Max:
+	case riksbank.Max:
 		valueLabel = "Max value"
-	case swea.Ultimo:
+	case riksbank.Ultimo:
 		valueLabel = "Ultimo value"
 	default:
 		valueLabel = "Value"
 	}
 	fmt.Fprintf(w, rowFmt, "Period", "Series ID", "Series Name", valueLabel)
 	for _, rate := range res.Rates {
-		var value string
-		switch analysis {
-		case swea.Mean:
-			value = rate.Average
-		case swea.Min:
-			value = rate.Min
-		case swea.Max:
-			value = rate.Max
-		case swea.Ultimo:
-			value = rate.Ultimo
-		default:
-			value = rate.Value
-		}
-		fmt.Fprintf(w, rowFmt, rate.Period, rate.SeriesID, rate.SeriesName, value)
+		fmt.Fprintf(w, rowFmt, rate.Period, rate.Series.ID, rate.Series.Name, formatFloat(rate.Value))
 	}
 	return nil
 }

@@ -4,8 +4,9 @@ import (
 	"os"
 	"testing"
 
+	"github.com/zeeraw/riksbank"
 	"github.com/zeeraw/riksbank/cli"
-	"github.com/zeeraw/riksbank/swea"
+	"github.com/zeeraw/riksbank/swea/mock"
 )
 
 const (
@@ -17,8 +18,11 @@ var (
 )
 
 func TestMain(m *testing.M) {
+	mck := mock.New()
 	tool = cli.Tool{
-		API: swea.NewMock(),
+		Riksbank: riksbank.New(riksbank.Config{
+			SweaClient: mck,
+		}),
 	}
 	os.Exit(m.Run())
 }
@@ -112,11 +116,11 @@ func Test_Run(t *testing.T) {
 			errors: false,
 		},
 		{
-			name: "exchange series",
+			name: "exchange currencies",
 			args: []string{
 				bin,
 				"exchange",
-				"series",
+				"currencies",
 			},
 			errors: false,
 		},

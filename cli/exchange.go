@@ -12,7 +12,7 @@ func (t *Tool) cmdExchange() cli.Command {
 		Name:  exchangeName,
 		Usage: exchangeUsage,
 		Subcommands: []cli.Command{
-			t.cmdExchangeSeries(),
+			t.cmdExchangeCurrencies(),
 			t.cmdExchangeRates(),
 		},
 	}

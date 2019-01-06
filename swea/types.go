@@ -16,14 +16,6 @@ const (
 	Swedish = Language("sv")
 )
 
-// Series is the container for a series ID
-type Series string
-
-// ToCurrency converts a series into a currency
-func (s Series) ToCurrency() Currency {
-	return ParseCurrency(string(s))
-}
-
 // SearchGroupSeries represents searchable group series
 type SearchGroupSeries struct {
 	GroupID  string
@@ -32,25 +24,18 @@ type SearchGroupSeries struct {
 
 // CrossPair are the series to compare in a currency exchange
 type CrossPair struct {
-	Base    Series
-	Counter Series
-}
-
-// ToCurrencyPair converts
-func (cp CrossPair) ToCurrencyPair() CurrencyPair {
-	return CurrencyPair{
-		Base:    cp.Base.ToCurrency(),
-		Counter: cp.Counter.ToCurrency(),
-	}
+	BaseSeriesID    string
+	CounterSeriesID string
 }
 
 // CrossRateInfo is an exchange rate between two currencies
 type CrossRateInfo struct {
-	Base    Currency
-	Counter Currency
+	Base    string
+	Counter string
 	Date    time.Time
 	Period  string
 	Value   string
+	Average string
 }
 
 // DayInfo represents a date in the context of the central bank
@@ -156,7 +141,7 @@ type GetCrossRatesRequest struct {
 	From            time.Time
 	To              time.Time
 	Language        Language
-	AggregateMethod AggregateMethod
+	AggregateMethod string
 }
 
 // GetCrossRatesResponse contains exchange rates
@@ -167,7 +152,7 @@ type GetCrossRatesResponse struct {
 	From            time.Time
 	To              time.Time
 	Language        Language
-	AggregateMethod AggregateMethod
+	AggregateMethod string
 }
 
 // GetInterestAndExchangeRatesRequest represents the parameters to get exchange and interest rates
@@ -177,7 +162,7 @@ type GetInterestAndExchangeRatesRequest struct {
 	From            time.Time
 	To              time.Time
 	Language        Language
-	AggregateMethod AggregateMethod
+	AggregateMethod string
 
 	Average bool
 	Min     bool
@@ -194,7 +179,7 @@ type GetInterestAndExchangeRatesResponse struct {
 	From            time.Time
 	To              time.Time
 	Language        Language
-	AggregateMethod AggregateMethod
+	AggregateMethod string
 
 	Average bool
 	Min     bool

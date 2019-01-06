@@ -6,8 +6,9 @@ import (
 	"os"
 	"text/tabwriter"
 
+	"github.com/zeeraw/riksbank"
+
 	"github.com/urfave/cli"
-	"github.com/zeeraw/riksbank/swea"
 )
 
 const (
@@ -28,19 +29,15 @@ func (t *Tool) cmdGroups() cli.Command {
 
 func (t *Tool) actionGroups(c *cli.Context) error {
 	ctx := context.Background()
-	req := &swea.GetInterestAndExchangeGroupNamesRequest{
-		Language: swea.Language(c.String("lang")),
-	}
-
-	res, err := t.API.GetInterestAndExchangeGroupNames(ctx, req)
+	req := &riksbank.GroupsRequest{}
+	res, err := t.Riksbank.Groups(ctx, req)
 	if err != nil {
 		return err
 	}
-
-	return t.renderGroups(res)
+	return t.renderGroups(req, res)
 }
 
-func (t *Tool) renderGroups(res *swea.GetInterestAndExchangeGroupNamesResponse) error {
+func (t *Tool) renderGroups(req *riksbank.GroupsRequest, res *riksbank.GroupsResponse) error {
 	const (
 		rowFmt = "%s\t %s\n"
 	)

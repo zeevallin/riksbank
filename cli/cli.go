@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/zeeraw/riksbank"
+
 	"github.com/urfave/cli"
-	"github.com/zeeraw/riksbank/swea"
 )
 
 // Tool represents the command line tool for riksbank
 type Tool struct {
-	API swea.Swea
+	Riksbank *riksbank.Riksbank
 }
 
 var (
@@ -29,7 +30,7 @@ func init() {
 // New returns a new Tool with the live API
 func New() *Tool {
 	return &Tool{
-		API: swea.New(swea.Config{}),
+		Riksbank: riksbank.New(riksbank.Config{}),
 	}
 }
 

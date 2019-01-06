@@ -7,7 +7,7 @@ import (
 	"text/tabwriter"
 
 	"github.com/urfave/cli"
-	"github.com/zeeraw/riksbank/swea"
+	"github.com/zeeraw/riksbank"
 )
 
 const (
@@ -37,23 +37,27 @@ func (t *Tool) actionDays(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	res, err := t.API.GetCalendarDays(ctx, &swea.GetCalendarDaysRequest{
+	req := &riksbank.DaysRequest{
 		From: from,
 		To:   to,
-	})
+	}
+	res, err := t.Riksbank.Days(ctx, req)
 	if err != nil {
 		return nil
 	}
-	t.renderDays(res)
+	t.renderDays(req, res)
 	return nil
 }
 
-func (t *Tool) renderDays(res *swea.GetCalendarDaysResponse) {
-	fmt.Fprintf(os.Stdout, "Showing days between %s and %s\n\n", formatDate(res.From), formatDate(res.To))
+func (t *Tool) renderDays(req *riksbank.DaysRequest, res *riksbank.DaysResponse) {
+	const (
+		rowFmt = "%s\t %s\t %s\n"
+	)
+	fmt.Fprintf(os.Stdout, "Showing days between %s and %s\n\n", formatDate(req.From), formatDate(req.To))
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
-	fmt.Fprintf(w, "Date\t Year\t Week\t Bank day\n")
+	fmt.Fprintf(w, rowFmt, "Date", "Week", "Bank day")
 	for _, day := range res.Days {
-		fmt.Fprintf(w, "%s\t %d\t %d\t %s\n", formatDate(day.Date), day.WeekYear, day.Week, boolToYesNo(day.IsBankDay))
+		fmt.Fprintf(w, rowFmt, formatDate(day.Date), formatInt(day.Week), boolToYesNo(day.IsBankDay))
 	}
 	defer w.Flush()
 }

@@ -139,18 +139,12 @@ func (api *LiveAPI) GetCrossRates(ctx context.Context, req *GetCrossRatesRequest
 	for _, s := range env.Body.GetCrossRatesResponse.Return.Groups.Series {
 		for _, rr := range s.Resultrows {
 			date, period := xmlstrings.ParseDatePeriod(rr.Date, rr.Period.Text)
-			var value string
-			switch req.AggregateMethod {
-			case Weekly, Monthly, Quarterly, Yearly:
-				value = strings.TrimSpace(rr.Average.Text)
-			default:
-				value = strings.TrimSpace(rr.Value)
-			}
 			cr := CrossRateInfo{
-				Base:    ParseCurrency(strings.TrimSpace(s.Seriesid1)),
-				Counter: ParseCurrency(strings.TrimSpace(s.Seriesid2)),
+				Base:    strings.TrimSpace(s.Seriesid1),
+				Counter: strings.TrimSpace(s.Seriesid2),
 				Date:    date,
-				Value:   value,
+				Value:   strings.TrimSpace(rr.Value),
+				Average: strings.TrimSpace(rr.Average.Text),
 				Period:  period,
 			}
 			crossRates = append(crossRates, cr)

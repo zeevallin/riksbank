@@ -1,4 +1,4 @@
-package swea
+package riksbank
 
 import (
 	"fmt"
@@ -89,7 +89,7 @@ type UnknownAnalysisForAggregateError struct {
 }
 
 func (e UnknownAnalysisForAggregateError) Error() string {
-	return fmt.Sprintf("%s aggregate does not support analysis method: %v", AggregateName(e.agm), e.anm)
+	return fmt.Sprintf("%s aggregate does not support analysis method: %v", e.agm.Name(), e.anm)
 }
 
 // UnknownAnalysisError happens when the analysis method does not exist at all
@@ -101,8 +101,8 @@ func (e UnknownAnalysisError) Error() string {
 	return fmt.Sprintf("analysis method does not exist: %s", e.s)
 }
 
-// ParseAnalysisForAggregate will attempt to parse a string with an aggregate
-func ParseAnalysisForAggregate(s string, aggregate AggregateMethod) (AnalysisMethod, error) {
+// ParseAggregateAnalysis will attempt to parse a string with an aggregate
+func ParseAggregateAnalysis(aggregate AggregateMethod, s string) (AnalysisMethod, error) {
 	analysis, ok := AnalysisMethods[strings.ToLower(s)]
 	if !ok {
 		return AnalysisMethod(0), UnknownAnalysisError{s}
