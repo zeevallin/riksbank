@@ -7,8 +7,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-
-	"github.com/davecgh/go-spew/spew"
 )
 
 const (
