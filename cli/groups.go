@@ -21,9 +21,6 @@ func (t *Tool) cmdGroups() cli.Command {
 		Name:   groupsName,
 		Usage:  groupsUsage,
 		Action: t.actionGroups,
-		Flags: []cli.Flag{
-			t.flagLang(),
-		},
 	}
 }
 

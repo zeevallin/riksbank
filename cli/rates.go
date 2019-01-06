@@ -24,7 +24,6 @@ func (t *Tool) cmdRates() cli.Command {
 		Flags: []cli.Flag{
 			t.flagFrom(),
 			t.flagTo(),
-			t.flagLang(),
 			t.flagAggregate(),
 			t.flagAnalysis(),
 			t.flagSeries(),

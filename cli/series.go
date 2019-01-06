@@ -22,7 +22,6 @@ func (t *Tool) cmdSeries() cli.Command {
 		Usage:  seriesUsage,
 		Action: t.actionSeries,
 		Flags: []cli.Flag{
-			t.flagLang(),
 			t.flagGroup(),
 		},
 	}

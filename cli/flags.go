@@ -20,14 +20,6 @@ func (t *Tool) flagTo() *cli.StringFlag {
 	}
 }
 
-func (t *Tool) flagLang() *cli.StringFlag {
-	return &cli.StringFlag{
-		Name:  "lang",
-		Usage: "en or sv",
-		Value: "en",
-	}
-}
-
 func (t *Tool) flagAggregate() *cli.StringFlag {
 	return &cli.StringFlag{
 		Name:  "aggregate",

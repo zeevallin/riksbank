@@ -21,9 +21,6 @@ func (t *Tool) cmdExchangeCurrencies() cli.Command {
 		Name:   exchangeCurrenciesName,
 		Usage:  exchangeCurrenciesUsage,
 		Action: t.actionExchangeCurrencies,
-		Flags: []cli.Flag{
-			t.flagLang(),
-		},
 	}
 }
 
