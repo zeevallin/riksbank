@@ -8,8 +8,8 @@ build: gen
 	@go build \
 	-o build/riksbank
 
-test: gen
 gen: prepare
 	@packr
 
+test: prepare
 	@go test -cover ./...
