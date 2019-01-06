@@ -1,3 +1,5 @@
+[![GoDoc](https://godoc.org/github.com/zeeraw/riksbank?status.svg)](https://godoc.org/github.com/zeeraw/riksbank)
+
 # riksbank
 Go library and command line tool for interacting with the swedish central bank API.
 
