@@ -2,6 +2,11 @@ package swea
 
 import (
 	"context"
+	"encoding/xml"
+	"io"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -10,14 +15,53 @@ import (
 	"github.com/zeeraw/riksbank/swea/responses"
 )
 
+const (
+	scheme      = "http"
+	host        = "swea.riksbank.se"
+	path        = "/sweaWS/services/SweaWebServiceHttpSoap12Endpoint"
+	contentType = "text/xml"
+)
+
+var (
+	sweaURL = &url.URL{
+		Scheme: scheme,
+		Host:   host,
+		Path:   path,
+	}
+)
+
+// Config represents the configuration for the Riksbank API client
+type Config struct {
+	HTTPClient *http.Client
+}
+
+// LiveAPI is a collection of the methods for the live Riksbank API
+type LiveAPI struct {
+	client *http.Client
+	url    *url.URL
+}
+
+// New constructs and returns a new Swea client
+func New(config Config) *LiveAPI {
+	// Setup the HTTP client
+	client := http.DefaultClient
+	if config.HTTPClient != nil {
+		client = config.HTTPClient
+	}
+	return &LiveAPI{
+		client: client,
+		url:    sweaURL,
+	}
+}
+
 // GetCalendarDays returns the business days between two dates
-func (s *Swea) GetCalendarDays(ctx context.Context, req *GetCalendarDaysRequest) (*GetCalendarDaysResponse, error) {
+func (api *LiveAPI) GetCalendarDays(ctx context.Context, req *GetCalendarDaysRequest) (*GetCalendarDaysResponse, error) {
 	body, err := build(tmpl("get_calendar_days"), req)
 	if err != nil {
 		return nil, err
 	}
 	env := &responses.GetCalendarDaysResponseEnvelope{}
-	err = s.call(ctx, body, env)
+	err = api.call(ctx, body, env)
 	if err != nil {
 		return nil, err
 	}
@@ -50,13 +94,13 @@ func (s *Swea) GetCalendarDays(ctx context.Context, req *GetCalendarDaysRequest)
 }
 
 // GetAllCrossNames returns the series names for exhcnage rates to SEK
-func (s *Swea) GetAllCrossNames(ctx context.Context, req *GetAllCrossNamesRequest) (*GetAllCrossNamesResponse, error) {
+func (api *LiveAPI) GetAllCrossNames(ctx context.Context, req *GetAllCrossNamesRequest) (*GetAllCrossNamesResponse, error) {
 	body, err := build(tmpl("get_all_cross_names"), req)
 	if err != nil {
 		return nil, err
 	}
 	env := &responses.GetAllCrossNamesResponseEnvelope{}
-	err = s.call(ctx, body, env)
+	err = api.call(ctx, body, env)
 	if err != nil {
 		return nil, err
 	}
@@ -75,13 +119,13 @@ func (s *Swea) GetAllCrossNames(ctx context.Context, req *GetAllCrossNamesReques
 }
 
 // GetCrossRates returns the exchange rates for series
-func (s *Swea) GetCrossRates(ctx context.Context, req *GetCrossRatesRequest) (*GetCrossRatesResponse, error) {
+func (api *LiveAPI) GetCrossRates(ctx context.Context, req *GetCrossRatesRequest) (*GetCrossRatesResponse, error) {
 	body, err := build(tmpl("get_cross_rates"), req)
 	if err != nil {
 		return nil, err
 	}
 	env := &responses.GetCrossRatesResponseEnvelope{}
-	err = s.call(ctx, body, env)
+	err = api.call(ctx, body, env)
 	if err != nil {
 		return nil, err
 	}
@@ -129,13 +173,13 @@ func (s *Swea) GetCrossRates(ctx context.Context, req *GetCrossRatesRequest) (*G
 }
 
 // GetInterestAndExchangeRates returns values that are aggregated and grouped according to selected aggregate method
-func (s *Swea) GetInterestAndExchangeRates(ctx context.Context, req *GetInterestAndExchangeRatesRequest) (*GetInterestAndExchangeRatesResponse, error) {
+func (api *LiveAPI) GetInterestAndExchangeRates(ctx context.Context, req *GetInterestAndExchangeRatesRequest) (*GetInterestAndExchangeRatesResponse, error) {
 	body, err := build(tmpl("get_interest_and_exchange_rates"), req)
 	if err != nil {
 		return nil, err
 	}
 	env := &responses.GetInterestAndExchangeRatesResponseEnvelope{}
-	err = s.call(ctx, body, env)
+	err = api.call(ctx, body, env)
 	if err != nil {
 		return nil, err
 	}
@@ -184,13 +228,13 @@ func (s *Swea) GetInterestAndExchangeRates(ctx context.Context, req *GetInterest
 }
 
 // GetInterestAndExchangeGroupNames returns all the groups of interest and exchange rates
-func (s *Swea) GetInterestAndExchangeGroupNames(ctx context.Context, req *GetInterestAndExchangeGroupNamesRequest) (*GetInterestAndExchangeGroupNamesResponse, error) {
+func (api *LiveAPI) GetInterestAndExchangeGroupNames(ctx context.Context, req *GetInterestAndExchangeGroupNamesRequest) (*GetInterestAndExchangeGroupNamesResponse, error) {
 	body, err := build(tmpl("get_interest_and_exchange_group_names"), req)
 	if err != nil {
 		return nil, err
 	}
 	env := &responses.GetInterestAndExchangeGroupNamesResponseEnvelope{}
-	err = s.call(ctx, body, env)
+	err = api.call(ctx, body, env)
 	if err != nil {
 		return nil, err
 	}
@@ -212,13 +256,13 @@ func (s *Swea) GetInterestAndExchangeGroupNames(ctx context.Context, req *GetInt
 }
 
 // GetInterestAndExchangeNames returns the series for the selected group
-func (s *Swea) GetInterestAndExchangeNames(ctx context.Context, req *GetInterestAndExchangeNamesRequest) (*GetInterestAndExchangeNamesResponse, error) {
+func (api *LiveAPI) GetInterestAndExchangeNames(ctx context.Context, req *GetInterestAndExchangeNamesRequest) (*GetInterestAndExchangeNamesResponse, error) {
 	body, err := build(tmpl("get_interest_and_exchange_names"), req)
 	if err != nil {
 		return nil, err
 	}
 	env := &responses.GetInterestAndExchangeNamesResponseEnvelope{}
-	err = s.call(ctx, body, env)
+	err = api.call(ctx, body, env)
 	if err != nil {
 		return nil, err
 	}
@@ -245,26 +289,29 @@ func (s *Swea) GetInterestAndExchangeNames(ctx context.Context, req *GetInterest
 	return res, nil
 }
 
-func parseDate(s string) *civil.Date {
-	d, err := civil.ParseDate(strings.TrimSpace(s))
+func (api *LiveAPI) call(ctx context.Context, body io.Reader, v interface{}) error {
+	// Build the request
+	req, err := http.NewRequest(http.MethodPost, api.url.String(), body)
 	if err != nil {
-		return &civil.Date{}
+		return err
 	}
-	return &d
-}
+	req.Header.Add("Content-Type", contentType)
+	req = req.WithContext(ctx)
 
-func parseDatePeriod(d, p string) (civil.Date, string, error) {
-	date, err := civil.ParseDate(strings.TrimSpace(d))
+	// Perform the request
+	res, err := api.client.Do(req)
 	if err != nil {
-		return date, "", err
+		return err
 	}
-	var period string
-	ptx := strings.TrimSpace(p)
-	if ptx != "" {
-		period = ptx
-	} else {
-		period = date.String()
-	}
+	defer res.Body.Close()
 
-	return date, period, nil
+	utf8 := NewValidUTF8Reader(res.Body)
+
+	// Read the response
+	bts, err := ioutil.ReadAll(utf8)
+	if err != nil {
+		return err
+	}
+	err = xml.Unmarshal(bts, v)
+	return err
 }

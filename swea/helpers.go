@@ -7,6 +7,7 @@ import (
 	"log"
 	"strings"
 
+	"cloud.google.com/go/civil"
 	"github.com/zeeraw/riksbank/swea/requests"
 )
 
@@ -34,4 +35,28 @@ func tmpl(name string) *template.Template {
 		log.Fatal("cannot load table template")
 	}
 	return template.Must(template.New(name).Funcs(requests.FuncMap).Parse(string(bts)))
+}
+
+func parseDate(s string) *civil.Date {
+	d, err := civil.ParseDate(strings.TrimSpace(s))
+	if err != nil {
+		return &civil.Date{}
+	}
+	return &d
+}
+
+func parseDatePeriod(d, p string) (civil.Date, string, error) {
+	date, err := civil.ParseDate(strings.TrimSpace(d))
+	if err != nil {
+		return date, "", err
+	}
+	var period string
+	ptx := strings.TrimSpace(p)
+	if ptx != "" {
+		period = ptx
+	} else {
+		period = date.String()
+	}
+
+	return date, period, nil
 }
