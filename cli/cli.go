@@ -46,10 +46,10 @@ func Run(args []string) error {
 	app.Author = "Philip Vieira"
 	app.Email = "zee@vall.in"
 	app.Commands = []cli.Command{
+		r.cmdRates(),
 		r.cmdDays(),
 		r.cmdExchanges(),
 		r.cmdExchangeRates(),
-		r.cmdRates(),
 	}
 	app.Before = func(c *cli.Context) error {
 		return nil
