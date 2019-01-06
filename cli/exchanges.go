@@ -10,12 +10,16 @@ import (
 	"github.com/zeeraw/riksbank/swea"
 )
 
+const (
+	exchangesName  = "exchanges"
+	exchangesUsage = "Lists series for currency exchange rates to SEK"
+)
+
 func (r *runner) cmdExchanges() cli.Command {
 	return cli.Command{
-		Name:      "exchanges",
-		Usage:     "Lists series for currency exchange rates to SEK",
-		UsageText: "foo",
-		Action:    r.actionExchanges,
+		Name:   exchangesName,
+		Usage:  exchangesUsage,
+		Action: r.actionExchanges,
 		Flags: []cli.Flag{
 			r.flagLang(),
 		},
