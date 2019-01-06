@@ -44,7 +44,7 @@ func (r *runner) renderGroups(res *swea.GetInterestAndExchangeGroupNamesResponse
 	const (
 		rowFmt = "%s\t %s\n"
 	)
-	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0)
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight)
 	defer w.Flush()
 	fmt.Fprintf(w, rowFmt, "ID", "Name")
 	for _, group := range res.Groups {
