@@ -1,0 +1,186 @@
+<soap:Envelope
+    xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+    <soap:Body>
+        <ns2:getInterestAndExchangeGroupNamesResponse
+            xmlns:ns2="http://swea.riksbank.se/xsd">
+        <return>
+            <groupdescription
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <groupid>1</groupid>
+            <groupname>Interest rates and exchange rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        </return>
+        <return>
+            <groupdescription>The Riksbank's key interest rates are those the bank sets for monetary policy purposes. They are the deposit rate, the lending rate and the repo rate.  The repo rate is the most important. (The marginal rate was the Riksbank's key interest rate from December 1985 to the end of May 1994). As well as the monetary policy key rates, the Riksbank also sets the reference rate (previously known as the discount rate), which is mentioned in the Interest Act, for instance.</groupdescription>
+            <groupid>137</groupid>
+            <groupname>Riksbank interest rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>1</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>A market rate is the rate that agents are prepared to pay for different types of credit. It is set according to supply and demand.</groupdescription>
+            <groupid>4</groupid>
+            <groupname>Swedish Market (based) rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>1</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>An international market rate is the rate agents are prepared to pay for either short-term or long-term credits and which is priced outside of the Swedish market.</groupdescription>
+            <groupid>96</groupid>
+            <groupname>International market rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>1</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>An exchange rate is the price of a currency expressed in units of another currency.</groupdescription>
+            <groupid>11</groupid>
+            <groupname>Exchange rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>1</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>STIBOR stands for Stockholm Interbank Offered Rate, the interest rate banks pay when borrowing money from one another. STIBOR Fixing is the average (with the exception of the highest and lowest quotes) of the interest rates listed at 11:05 a.m.</groupdescription>
+            <groupid>5</groupid>
+            <groupname>STIBOR (Stockholm interbank offered rate)</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>4</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>A Treasury Bill is a short-term debt instrument issued by the Swedish National Debt Office. The duration is usually up to one year. Treasury Bills are used to finance the government's short-term borrowing requirement.</groupdescription>
+            <groupid>6</groupid>
+            <groupname>Treasury Bills</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>4</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>Government Bonds is a term used for the bonds issued by the Swedish National Debt Office. The Debt office uses Government Bonds to finance the government's medium and long-term borrowing requirements.</groupdescription>
+            <groupid>7</groupid>
+            <groupname>Swedish Government Bonds</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>4</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>Fixing rates correspond to the average of the agents' selling quotes. Fixing rates are calculated daily at 11 a.m. for Treasury Bills and Government Bonds.</groupdescription>
+            <groupid>8</groupid>
+            <groupname>Fixing rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>4</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>A Mortgage Bond is a promissory note issued by a mortgage institution. By issuing mortgage bonds the mortgage institutions finance their long-term home mirtgge lending.</groupdescription>
+            <groupid>9</groupid>
+            <groupname>Mortgage Bonds</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>4</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>Corporate certificates are instruments issued by companies and used for short-term borrowing in the money market.</groupdescription>
+            <groupid>10</groupid>
+            <groupname>Corporate certificate</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>4</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>Averages are calculated on published observations for the daily fixing rates.  Observations are published daily at 12.15 p.m.</groupdescription>
+            <groupid>133</groupid>
+            <groupname>Monthly aggregate</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>11</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>Averages are calculated on published observations for the daily fixing rates during the period. Observations are published daily at 12.15 p.m.</groupdescription>
+            <groupid>134</groupid>
+            <groupname>Annual aggregate</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>11</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>The Swedish banks daily calculate a fixing rate at 9.30 a.m. according to the formula: (bid+asked) / 2. At 10.05 a.m. Stockholm Stock Exchange sets a joint MID-PRICE by calculating the aggregate of the banks' fixing rates. Observations are published daily at 12.15 p.m.</groupdescription>
+            <groupid>130</groupid>
+            <groupname>Currencies against Swedish kronor</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>11</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>SDR, Special Drawing Rights is an international reserve asset created by the International Monetary Fund, IMF, to supplement the existing official reserves of member countries.The value of the SDR is based on a basket of dollars, euro, yen and sterling.</groupdescription>
+            <groupid>138</groupid>
+            <groupname>SDR Special Drawing Rights</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>11</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>The Swedish banks daily calculate a fixing rate at 9.30 a.m. according to the formula: (bid+asked) / 2. At 10.05 a.m. Stockholm Stock Exchange sets a joint MID-PRICE by calculating the aggregate of the banks' fixing rates. On the basis of the MID-PRICE it is possible to calculate exchange rates against other currencies, what is known as cross rates.</groupdescription>
+            <groupid>131</groupid>
+            <groupname>Cross rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>11</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>The TCW (Total Competitiveness Weights) index is a method of measuring the value of the Swedish krona against a basket of other currencies. The TCW index has 18 November 1992 as its starting date when the index equals 100. On 19 November 1992 the peg to the ecu was dropped and since then the krona has floated.  It is possible to see how much the value of the krona has changed by studying this index. A high value on the index means that the krona has weakened and a low value means it has strengthened. The TCW is a geometric index and its weights are based on average aggregate flows of processed goods for 21 countries. The weights take into account exports, imports and third country effects. They are calculated by the IMF.</groupdescription>
+            <groupid>12</groupid>
+            <groupname>Swedish TCW index</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>11</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>The Swedish KIX index. The Riksbank has undertaken to publish the National Institute of Economic Research&#x92;s effective exchange rate index, KIX (Kronindex) with effect from 14 June 2007. The index will be available via the Riksbank's website, www.riksbank.se, and will be calculated daily.  It is possible to see how much the value of the krona has changed by studying this index. A high value on the index means that the krona has weakened and a low value means it has strengthened. KIX is a geometric index, where the weights are based on total flows of processed goods and commodities for 32 countries.  For further information and a description of the calculation of the weights, see the National Institute of Economic Research&#x92;s website, www.konj.se/kix.</groupdescription>
+            <groupid>151</groupid>
+            <groupname>Swedish KIX index</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>11</parentgroupid>
+        </return>
+        <return>
+            <groupdescription
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            <groupid>155</groupid>
+            <groupname>Currency Forward Rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>11</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>The euro market is a loan market without underlying collateral with fixed-term deposits, with the highest time limit being one year. The deposit market is mainly part of the interbank trading where one can follow the rates applying for some of the main currencies in the local interbank market (the bank?s internal market for trade in currencies and debt securities).</groupdescription>
+            <groupid>97</groupid>
+            <groupname>Euro market rates, maturity 3 months</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>96</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>The euro market is a loan market without underlying collateral with fixed-term deposits, with the highest time limit being one year. The deposit market is mainly part of the interbank trading where one can follow the rates applying for some of the main currencies in the local interbank market (the bank?s internal market for trade in currencies and debt securities).</groupdescription>
+            <groupid>98</groupid>
+            <groupname>Euro market rates, maturity 6 months</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>96</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>International Government Bonds, maturity 5 years, are Government securities issued outside of Sweden.</groupdescription>
+            <groupid>99</groupid>
+            <groupname>International Government Bonds, maturity 5 years</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>96</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>International Government Bonds, maturity 10 years, are Government securities issued outside of Sweden.</groupdescription>
+            <groupid>100</groupid>
+            <groupname>International Government Bonds, maturity 10 years</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>96</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>The Riksbank's key interest rates are those the bank sets for monetary policy purposes. They are the deposit rate, the lending rate and the repo rate. The most important rate is the repo rate. (The marginal rate was the Riksbank's key interest rate from December 1985 to the end of May 1994).</groupdescription>
+            <groupid>2</groupid>
+            <groupname>Riksbank key interest rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>137</parentgroupid>
+        </return>
+        <return>
+            <groupdescription>As well as the monetary policy key rates, the Riksbank also sets the reference rate (previously known as the discount rate), which is mentioned in the Interest Act, for instance.</groupdescription>
+            <groupid>3</groupid>
+            <groupname>Other Riksbank interest rates</groupname>
+            <languageid>en</languageid>
+            <parentgroupid>137</parentgroupid>
+        </return>
+        </ns2:getInterestAndExchangeGroupNamesResponse>
+    </soap:Body>
+</soap:Envelope>
