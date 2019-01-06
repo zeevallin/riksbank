@@ -7,6 +7,7 @@ import (
 	"text/tabwriter"
 
 	"github.com/zeeraw/riksbank"
+	"github.com/zeeraw/riksbank/cli/flags"
 
 	"github.com/urfave/cli"
 )
@@ -22,7 +23,7 @@ func (t *Tool) cmdSeries() cli.Command {
 		Usage:  seriesUsage,
 		Action: t.actionSeries,
 		Flags: []cli.Flag{
-			t.flagGroup(),
+			flags.Group,
 		},
 	}
 }

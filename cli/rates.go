@@ -9,6 +9,7 @@ import (
 
 	"github.com/urfave/cli"
 	"github.com/zeeraw/riksbank"
+	"github.com/zeeraw/riksbank/cli/flags"
 )
 
 const (
@@ -22,11 +23,11 @@ func (t *Tool) cmdRates() cli.Command {
 		Usage:  ratesUsage,
 		Action: t.actionRates,
 		Flags: []cli.Flag{
-			t.flagFrom(),
-			t.flagTo(),
-			t.flagAggregate(),
-			t.flagAnalysis(),
-			t.flagSeries(),
+			flags.From,
+			flags.To,
+			flags.Aggregate,
+			flags.Analysis,
+			flags.Series,
 		},
 	}
 }
@@ -37,11 +38,11 @@ func (t *Tool) actionRates(c *cli.Context) error {
 	if len(series) < 1 {
 		return fmt.Errorf("need to have at least one series")
 	}
-	from, err := parseDate(c.String("from"))
+	from, err := flags.ParseDate(c.String("from"))
 	if err != nil {
 		return err
 	}
-	to, err := parseDate(c.String("to"))
+	to, err := flags.ParseDate(c.String("to"))
 	if err != nil {
 		return err
 	}

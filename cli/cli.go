@@ -2,7 +2,6 @@ package cli
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/zeeraw/riksbank"
 
@@ -18,14 +17,6 @@ var (
 	defaultFrom string
 	defaultTo   string
 )
-
-func init() {
-	today := time.Now()
-	// Default to should be today
-	defaultTo = today.Format(dateLayout)
-	// Default from should be seven days ago
-	defaultFrom = today.AddDate(0, 0, -7).Format(dateLayout)
-}
 
 // New returns a new Tool with the live API
 func New() *Tool {

@@ -9,10 +9,6 @@ const (
 	dateLayout = "2006-01-02"
 )
 
-func parseDate(s string) (time.Time, error) {
-	return time.Parse(dateLayout, s)
-}
-
 func formatDate(t time.Time) string {
 	return t.Format(dateLayout)
 }

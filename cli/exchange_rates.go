@@ -10,6 +10,7 @@ import (
 	"github.com/zeeraw/riksbank"
 
 	"github.com/urfave/cli"
+	"github.com/zeeraw/riksbank/cli/flags"
 	"github.com/zeeraw/riksbank/currency"
 )
 
@@ -24,10 +25,10 @@ func (t *Tool) cmdExchangeRates() cli.Command {
 		Usage:  exchangeRatesUsage,
 		Action: t.actionExchangeRates,
 		Flags: []cli.Flag{
-			t.flagFrom(),
-			t.flagTo(),
-			t.flagAggregate(),
-			t.flagCurrency(),
+			flags.From,
+			flags.To,
+			flags.Aggregate,
+			flags.Currency,
 		},
 	}
 }
@@ -42,11 +43,11 @@ func (t *Tool) actionExchangeRates(c *cli.Context) error {
 	for idx, c := range cs {
 		pairs[idx] = currency.ParsePair(c)
 	}
-	from, err := parseDate(c.String("from"))
+	from, err := flags.ParseDate(c.String("from"))
 	if err != nil {
 		return err
 	}
-	to, err := parseDate(c.String("to"))
+	to, err := flags.ParseDate(c.String("to"))
 	if err != nil {
 		return err
 	}
