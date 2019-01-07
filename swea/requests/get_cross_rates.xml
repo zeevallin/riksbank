@@ -8,8 +8,8 @@
             <aggregateMethod>{{ .AggregateMethod }}</aggregateMethod>
             {{- range .CrossPairs }}
             <crossPair>
-                <seriesid1>{{.Base}}</seriesid1>
-                <seriesid2>{{.Counter}}</seriesid2>
+                <seriesid1>{{.BaseSeriesID}}</seriesid1>
+                <seriesid2>{{.CounterSeriesID}}</seriesid2>
             </crossPair>
             {{- end }}
             <datefrom>{{fmtDate .From}}</datefrom>
