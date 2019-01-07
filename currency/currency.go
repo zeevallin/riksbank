@@ -20,6 +20,7 @@ type Currency string
 
 // Parse will attempt to turn a string into a currency
 func Parse(s string) Currency {
+	s = strings.ToUpper(s)
 	if strings.HasSuffix(s, pmi) {
 		return Currency(s[3:6])
 	}
