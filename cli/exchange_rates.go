@@ -12,6 +12,7 @@ import (
 	"github.com/urfave/cli"
 	"github.com/zeeraw/riksbank/cli/flags"
 	"github.com/zeeraw/riksbank/currency"
+	"github.com/zeeraw/riksbank/date"
 )
 
 const (
@@ -43,11 +44,11 @@ func (t *Tool) actionExchangeRates(c *cli.Context) error {
 	for idx, c := range cs {
 		pairs[idx] = currency.ParsePair(c)
 	}
-	from, err := flags.ParseDate(c.String("from"))
+	from, err := date.Parse(c.String("from"))
 	if err != nil {
 		return err
 	}
-	to, err := flags.ParseDate(c.String("to"))
+	to, err := date.Parse(c.String("to"))
 	if err != nil {
 		return err
 	}

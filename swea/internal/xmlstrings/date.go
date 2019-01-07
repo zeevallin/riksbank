@@ -3,6 +3,8 @@ package xmlstrings
 import (
 	"strings"
 	"time"
+
+	"github.com/zeeraw/riksbank/date"
 )
 
 const (
@@ -12,19 +14,15 @@ const (
 
 // ParseDate attempts to turn a date string into a time object
 func ParseDate(s string) time.Time {
-	t, err := time.Parse(DateLayout, strings.TrimSpace(s))
-	if err != nil {
-		return time.Date(0, 0, 0, 0, 0, 0, 0, time.UTC)
-	}
-	return t
+	return date.ParseSafe(strings.TrimSpace(s))
 }
 
 // ParseDatePeriod attempts to turn a date and priod into usable values
 func ParseDatePeriod(d, p string) (time.Time, string) {
 	p = strings.TrimSpace(p)
-	date := ParseDate(d)
+	t := ParseDate(d)
 	if p == "" {
-		p = date.Format(DateLayout)
+		p = date.Format(t)
 	}
-	return date, p
+	return t, p
 }

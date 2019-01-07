@@ -9,6 +9,7 @@ import (
 	"github.com/urfave/cli"
 	"github.com/zeeraw/riksbank"
 	"github.com/zeeraw/riksbank/cli/flags"
+	"github.com/zeeraw/riksbank/date"
 )
 
 const (
@@ -30,11 +31,11 @@ func (t *Tool) cmdDays() cli.Command {
 
 func (t *Tool) actionDays(c *cli.Context) error {
 	ctx := context.Background()
-	from, err := flags.ParseDate(c.String("from"))
+	from, err := date.Parse(c.String("from"))
 	if err != nil {
 		return err
 	}
-	to, err := flags.ParseDate(c.String("to"))
+	to, err := date.Parse(c.String("to"))
 	if err != nil {
 		return err
 	}

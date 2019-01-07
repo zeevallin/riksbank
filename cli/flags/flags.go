@@ -65,8 +65,3 @@ var (
 		Usage: "group id (eg. 1), if none provided all groups will be shown",
 	}
 )
-
-// ParseDate parses a string flag to a date
-func ParseDate(s string) (time.Time, error) {
-	return time.Parse(dateLayout, s)
-}
