@@ -20,7 +20,7 @@ const (
 	scheme      = "http"
 	host        = "swea.riksbank.se"
 	path        = "/sweaWS/services/SweaWebServiceHttpSoap12Endpoint"
-	contentType = "text/xml"
+	contentType = "application/soap+xml;charset=UTF-8"
 )
 
 var (
@@ -65,7 +65,7 @@ func (api *LiveAPI) GetCalendarDays(ctx context.Context, req *GetCalendarDaysReq
 		return nil, err
 	}
 	env := &responses.GetCalendarDaysResponseEnvelope{}
-	err = api.call(ctx, body, env)
+	err = api.call(ctx, body, "getCalendarDays", env)
 	if err != nil {
 		return nil, err
 	}
@@ -101,7 +101,7 @@ func (api *LiveAPI) GetAllCrossNames(ctx context.Context, req *GetAllCrossNamesR
 		return nil, err
 	}
 	env := &responses.GetAllCrossNamesResponseEnvelope{}
-	err = api.call(ctx, body, env)
+	err = api.call(ctx, body, "getAllCrossNames", env)
 	if err != nil {
 		return nil, err
 	}
@@ -126,7 +126,7 @@ func (api *LiveAPI) GetCrossRates(ctx context.Context, req *GetCrossRatesRequest
 		return nil, err
 	}
 	env := &responses.GetCrossRatesResponseEnvelope{}
-	err = api.call(ctx, body, env)
+	err = api.call(ctx, body, "getCrossRates", env)
 	if err != nil {
 		return nil, err
 	}
@@ -164,7 +164,7 @@ func (api *LiveAPI) GetInterestAndExchangeRates(ctx context.Context, req *GetInt
 		return nil, err
 	}
 	env := &responses.GetInterestAndExchangeRatesResponseEnvelope{}
-	err = api.call(ctx, body, env)
+	err = api.call(ctx, body, "getInterestAndExchangeRates", env)
 	if err != nil {
 		return nil, err
 	}
@@ -216,7 +216,7 @@ func (api *LiveAPI) GetInterestAndExchangeGroupNames(ctx context.Context, req *G
 		return nil, err
 	}
 	env := &responses.GetInterestAndExchangeGroupNamesResponseEnvelope{}
-	err = api.call(ctx, body, env)
+	err = api.call(ctx, body, "getInterestAndExchangeGroupNames", env)
 	if err != nil {
 		return nil, err
 	}
@@ -244,7 +244,7 @@ func (api *LiveAPI) GetInterestAndExchangeNames(ctx context.Context, req *GetInt
 		return nil, err
 	}
 	env := &responses.GetInterestAndExchangeNamesResponseEnvelope{}
-	err = api.call(ctx, body, env)
+	err = api.call(ctx, body, "getInterestAndExchangeNames", env)
 	if err != nil {
 		return nil, err
 	}
@@ -271,13 +271,13 @@ func (api *LiveAPI) GetInterestAndExchangeNames(ctx context.Context, req *GetInt
 	return res, nil
 }
 
-func (api *LiveAPI) call(ctx context.Context, body io.Reader, v interface{}) error {
+func (api *LiveAPI) call(ctx context.Context, body io.Reader, action string, v interface{}) error {
 	// Build the request
 	req, err := http.NewRequest(http.MethodPost, api.url.String(), body)
 	if err != nil {
 		return err
 	}
-	req.Header.Add("Content-Type", contentType)
+	req.Header.Add("Content-Type", contentType+";action=urn:"+action)
 	req = req.WithContext(ctx)
 
 	// Perform the request
